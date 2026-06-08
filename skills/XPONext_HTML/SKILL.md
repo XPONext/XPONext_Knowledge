@@ -29,8 +29,16 @@ XPONext is a modern online-marketing agency for local businesses. The visual sty
 ```css
 font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
-/* Load Inter from Google Fonts */
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+/* IMPORTANT: Self-host Inter — do NOT load it from fonts.googleapis.com.
+   Loading fonts directly from Google's servers transmits visitor IP addresses
+   to Google (Drittlandtransfer) and is a known Abmahnungsfalle in Germany
+   (LG München I, 2022). Download the woff2 files once and serve them locally: */
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-variable.woff2') format('woff2');
+  font-weight: 400 900;
+  font-display: swap;
+}
 
 /* Scale */
 .headline-xl  { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; line-height: 1.1; color: #0D0D0D; }
