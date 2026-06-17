@@ -1,58 +1,180 @@
 ---
 name: xponext-design
-description: Use this skill whenever building any HTML page, landing page, website, or presentation for XPONext or in the XPONext brand style. Triggers when the user asks to create a website, landing page, HTML page, Präsentation, or any visual web content for XPONext or "in unserem Stil" / "in unserem Design". Always use this skill before writing any HTML — it defines the complete design system, components, and layout patterns that must be used consistently across all XPONext web output.
+description: Use this skill whenever creating ANY output for XPONext — websites, landing pages, HTML pages, presentations (PPTX or HTML), proposals, documents, or any other visual material. Also triggers when the user says "in unserem Stil", "in unserem Design", "XPONext-Design", or "wie bei uns". This skill defines the complete XPONext brand identity and must be applied consistently across all media. Always read this skill fully before producing any output.
 ---
 
-# XPONext Design System
+# XPONext Brand & Design System
 
-## Brand Identity
+## 1. Brand Identity
 
-XPONext is a modern online-marketing agency for local businesses. The visual style is clean, bold, and professional — inspired by top German digital agencies. White backgrounds, very large bold headlines, generous whitespace, and a strong green accent color.
+XPONext is a modern online-marketing agency for local businesses in Germany. The brand is clean, bold, and professional — with a strong personality. The visual language communicates expertise and trust without being corporate or cold.
 
-## Color Palette
+**Core brand values:** Klar. Direkt. Verlässlich.
+
+**Tone of voice:** Du-Form, no jargon, results-focused. Never salesy. Always specific.
+
+---
+
+## 2. Logo
+
+### Format
+The XPONext logo is always rendered as two-tone bold text — no image file required.
+
+```
+XPO        →  color: #0D0D0D  (schwarz)
+Next       →  color: #3F5137  (Akzentgrün)
+font-weight: 800
+```
+
+### HTML
+```html
+<span style="font-weight:800;color:#0D0D0D;font-family:'Inter',sans-serif;">XPO<span style="color:#3F5137;">Next</span></span>
+```
+
+### Placement Rules
+| Kontext | Position | Größe |
+|---|---|---|
+| Website Navigation | Oben links | font-size: 1.2rem |
+| Website Footer | Unten links | font-size: 1rem |
+| Präsentation Titelfolie | Oben links, Abstand: 2.5cm vom Rand | font-size: 28–32pt |
+| Präsentation alle weiteren Folien | Oben links, kleiner | font-size: 16–18pt |
+| Dokumente / Angebote | Oben links auf jeder Seite | font-size: 14–16pt |
+
+### Logo Don'ts
+- ❌ Niemals das Logo zentrieren (außer explizit gewünscht auf Titelfolien)
+- ❌ Niemals andere Farben für XPO oder Next verwenden
+- ❌ Niemals font-weight unter 700
+- ❌ Niemals auf farbigem Hintergrund ohne Anpassung (auf dunklem Hintergrund: XPO weiß, Next grün)
+
+### Logo auf dunklem Hintergrund
+```html
+<span style="font-weight:800;color:#FFFFFF;font-family:'Inter',sans-serif;">XPO<span style="color:#3F5137;">Next</span></span>
+```
+
+---
+
+## 3. Farben
 
 ```css
---accent:        #3F5137;   /* Primary green RAL 6020 — headlines, buttons, badges */
---accent-dark:   #2E3D28;   /* Hover states */
---accent-light:  #E8EDE6;   /* Badge backgrounds, subtle highlights */
---text-primary:  #0D0D0D;   /* Headlines */
---text-body:     #4B5563;   /* Body text, subtitles */
---text-muted:    #9CA3AF;   /* Small hints, captions */
---bg:            #FFFFFF;   /* Page background */
---bg-subtle:     #F9FAFB;   /* Section alternates */
---border:        #E5E7EB;   /* Dividers, card borders */
+/* Primärfarben */
+--accent:        #3F5137;   /* Hauptgrün — Buttons, Highlights, Akzente in Headlines */
+--accent-dark:   #2E3D28;   /* Hover-Zustände, dunklere Variante */
+--accent-light:  #E8EDE6;   /* Badge-Hintergründe, dezente Highlights */
+
+/* Text */
+--text-primary:  #0D0D0D;   /* Headlines, Logo "XPO" */
+--text-body:     #4B5563;   /* Fließtext, Untertitel */
+--text-muted:    #9CA3AF;   /* Hinweise, Captions, Footer-Links */
+
+/* Hintergründe */
+--bg:            #FFFFFF;   /* Standard-Seitenhintergrund */
+--bg-subtle:     #F9FAFB;   /* Abwechselnde Sections, Tabellen */
+--bg-dark:       #0D0D0D;   /* CTA-Blöcke, dunkle Abschnitte */
+
+/* UI */
+--border:        #E5E7EB;   /* Trennlinien, Card-Rahmen */
 --btn-outline-border: #D1D5DB;
 ```
 
-## Typography
+### Farbeinsatz-Regeln
+- Akzentgrün sparsam einsetzen — maximal 1–2 Elemente pro Sichtbereich
+- Nie ganze Headlines grün — nur einzelne Schlüsselwörter oder -phrasen
+- Hintergründe bleiben weiß oder hellgrau (`#F9FAFB`) — keine bunten Flächen
+- Einzige Ausnahme: der dunkle CTA-Block (`#0D0D0D`) am Seitenende
 
-```css
-font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+---
 
-/* Load Inter from Google Fonts */
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+## 4. Typografie
 
-/* Scale */
-.headline-xl  { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; line-height: 1.1; color: #0D0D0D; }
-.headline-lg  { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; line-height: 1.2; color: #0D0D0D; }
-.headline-md  { font-size: 1.4rem; font-weight: 700; color: #0D0D0D; }
-.body         { font-size: 1.05rem; font-weight: 400; line-height: 1.7; color: #4B5563; }
-.small        { font-size: 0.9rem; color: #9CA3AF; }
-```
-
-**Key rule:** Important words or phrases in headlines get the accent color — never the entire headline.
+**Schriftart:** Inter (Google Fonts)
 
 ```html
-<h1>Mehr Kunden für dein Unternehmen. <span style="color:#3F5137">Garantiert.</span></h1>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 ```
 
-## Core Components
+### Skala
+
+| Rolle | Größe | Gewicht | Farbe |
+|---|---|---|---|
+| Headline XL (H1) | clamp(2.4rem, 5vw, 3.8rem) | 900 | #0D0D0D |
+| Headline L (H2) | clamp(1.8rem, 3vw, 2.6rem) | 800 | #0D0D0D |
+| Headline M (H3) | 1.4rem | 700 | #0D0D0D |
+| Body | 1.05rem | 400 | #4B5563 |
+| Small / Caption | 0.9rem | 400–600 | #9CA3AF |
+
+### Für Präsentationen (pt-Werte)
+| Rolle | Größe | Gewicht |
+|---|---|---|
+| Titelfolie Headline | 44–54pt | 900 |
+| Abschnitts-Headline | 32–38pt | 800 |
+| Inhalts-Headline | 22–26pt | 700 |
+| Body / Bulletpoints | 16–18pt | 400 |
+| Fußzeile / Quelle | 10–11pt | 400 |
+
+### Typografie-Regeln
+- Schlüsselwörter in Headlines immer mit Akzentfarbe hervorheben — nie die gesamte Headline
+- Kein Italic für Headlines — nur für Zitate oder Hervorhebungen im Fließtext
+- Zeilenabstand Body: 1.7 (Web) / 1.4 (Präsentation)
+
+```html
+<!-- Richtig: -->
+<h1>Mehr Kunden für deinen Betrieb. <span style="color:#3F5137">Garantiert.</span></h1>
+
+<!-- Falsch: -->
+<h1 style="color:#3F5137">Mehr Kunden für deinen Betrieb.</h1>
+```
+
+---
+
+## 5. Abstände & Spacing
+
+Konsistentes Spacing ist entscheidend für das saubere, professionelle Erscheinungsbild.
+
+### Web
+```
+Section vertikal:     padding 4rem–5rem oben/unten
+Container max-width:  1200px, zentriert, padding 0 5%
+Card-padding:         1.75rem
+Gap zwischen Cards:   1.5rem
+Gap Hero-Spalten:     3rem
+Abstand Badge→H1:     1.2rem
+Abstand H1→Subtext:   1.2rem
+Abstand Subtext→CTA:  2rem
+```
+
+### Präsentationen
+```
+Folienrand:           2cm rundum (Mindestabstand aller Elemente vom Rand)
+Logo oben links:      2cm vom linken Rand, 1.5cm von oben
+Abschnitte:           mind. 0.8cm Abstand zwischen Inhaltselementen
+Fußzeile:             0.8cm vom unteren Rand
+```
+
+### Dokumente (Angebote, Berichte)
+```
+Seitenränder:         2.5cm oben/unten, 2.5cm links/rechts
+Logo oben links:      im Kopfbereich, Abstand 1.5cm vom Rand
+Abschnitte:           16pt Abstand vor Überschriften
+```
+
+---
+
+## 6. Anwendung: Webseiten & Landing Pages
+
+### Seitenstruktur (Reihenfolge)
+1. Navigation (sticky)
+2. Hero (2-spaltig: Text + Visual)
+3. Social Proof Bar
+4. Features / Leistungen (3er-Grid mit Cards)
+5. Stats Row
+6. Testimonials
+7. CTA-Block (dunkel)
+8. Footer
 
 ### Navigation
-
 ```html
 <nav style="display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;border-bottom:1px solid #E5E7EB;background:#fff;position:sticky;top:0;z-index:100;">
-  <div style="font-size:1.2rem;font-weight:800;color:#0D0D0D;">XPO<span style="color:#3F5137">Next</span></div>
+  <div style="font-size:1.2rem;font-weight:800;color:#0D0D0D;font-family:'Inter',sans-serif;">XPO<span style="color:#3F5137;">Next</span></div>
   <div style="display:flex;gap:2rem;align-items:center;">
     <a href="#" style="color:#4B5563;text-decoration:none;font-size:0.95rem;">Leistungen</a>
     <a href="#" style="color:#4B5563;text-decoration:none;font-size:0.95rem;">Ergebnisse</a>
@@ -62,85 +184,32 @@ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 </nav>
 ```
 
-### Badge (small label above headline)
-
+### Badge
 ```html
 <div style="display:inline-flex;align-items:center;gap:6px;background:#E8EDE6;color:#2E3D28;padding:0.35rem 0.9rem;border-radius:99px;font-size:0.85rem;font-weight:600;margin-bottom:1.2rem;">
-  ⚡ Online-Marketing für lokale Betriebe
+  ⚡ Kurze Kategorie-Beschreibung
 </div>
 ```
 
-### Hero Section (two-column)
-
+### Buttons
 ```html
-<section style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;padding:5rem 5%;max-width:1200px;margin:0 auto;">
-  <div>
-    <!-- Badge -->
-    <div style="display:inline-flex;align-items:center;gap:6px;background:#E8EDE6;color:#2E3D28;padding:0.35rem 0.9rem;border-radius:99px;font-size:0.85rem;font-weight:600;margin-bottom:1.2rem;">
-      ⚡ Kurze Beschreibung
-    </div>
-    <!-- Headline -->
-    <h1 style="font-size:clamp(2.4rem,5vw,3.8rem);font-weight:900;line-height:1.1;color:#0D0D0D;margin:0 0 1.2rem;">
-      Headline hier.<br><span style="color:#3F5137">Akzent hier.</span>
-    </h1>
-    <!-- Subheadline -->
-    <p style="font-size:1.1rem;color:#4B5563;line-height:1.7;margin:0 0 2rem;">
-      Kurze überzeugende Beschreibung in 2-3 Sätzen.
-    </p>
-    <!-- CTA Buttons -->
-    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-      <a href="#" style="background:#3F5137;color:#fff;padding:0.85rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:1rem;display:inline-flex;align-items:center;gap:8px;">Termin buchen →</a>
-      <a href="#" style="background:#fff;color:#0D0D0D;padding:0.85rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:1rem;border:1.5px solid #D1D5DB;display:inline-flex;align-items:center;gap:8px;">Mehr erfahren</a>
-    </div>
-  </div>
-  <div>
-    <!-- Image or visual element here -->
-  </div>
-</section>
+<!-- Primär -->
+<a href="#" style="background:#3F5137;color:#fff;padding:0.85rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:1rem;display:inline-flex;align-items:center;gap:8px;">Termin buchen →</a>
+
+<!-- Sekundär -->
+<a href="#" style="background:#fff;color:#0D0D0D;padding:0.85rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:1rem;border:1.5px solid #D1D5DB;display:inline-flex;align-items:center;gap:8px;">Mehr erfahren</a>
 ```
 
-### Social Proof Bar
-
+### Cards
 ```html
-<div style="text-align:center;padding:1.5rem 5%;border-top:1px solid #E5E7EB;border-bottom:1px solid #E5E7EB;background:#F9FAFB;">
-  <p style="font-size:0.9rem;font-weight:600;color:#9CA3AF;letter-spacing:0.05em;">BEREITS ÜBER 50 LOKALE UNTERNEHMEN BETREUT</p>
+<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:1.75rem;">
+  <div style="width:44px;height:44px;background:#E8EDE6;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.3rem;">🌐</div>
+  <h3 style="font-size:1.15rem;font-weight:700;color:#0D0D0D;margin:0 0 0.5rem;">Titel</h3>
+  <p style="color:#4B5563;font-size:0.95rem;line-height:1.6;margin:0;">Beschreibung in 1–2 Sätzen.</p>
 </div>
 ```
 
-### Feature Cards (3-column grid)
-
-```html
-<section style="padding:5rem 5%;max-width:1200px;margin:0 auto;">
-  <div style="text-align:center;margin-bottom:3rem;">
-    <h2 style="font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;color:#0D0D0D;">Was wir für euch tun</h2>
-    <p style="color:#4B5563;font-size:1.05rem;margin-top:0.75rem;">Alles aus einer Hand.</p>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;">
-    <!-- Card -->
-    <div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:1.75rem;">
-      <div style="width:44px;height:44px;background:#E8EDE6;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.3rem;">🌐</div>
-      <h3 style="font-size:1.15rem;font-weight:700;color:#0D0D0D;margin:0 0 0.5rem;">Webseite</h3>
-      <p style="color:#4B5563;font-size:0.95rem;line-height:1.6;margin:0;">Professionelle, mobiloptimierte Webseite die auf Google gefunden wird.</p>
-    </div>
-  </div>
-</section>
-```
-
-### Stats Row
-
-```html
-<section style="padding:4rem 5%;background:#F9FAFB;">
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2rem;max-width:900px;margin:0 auto;text-align:center;">
-    <div>
-      <p style="font-size:2.6rem;font-weight:900;color:#3F5137;margin:0;">50+</p>
-      <p style="font-size:0.9rem;color:#4B5563;margin:0.3rem 0 0;">Kunden betreut</p>
-    </div>
-  </div>
-</section>
-```
-
-### CTA Section (full-width)
-
+### CTA-Block (dunkel)
 ```html
 <section style="padding:5rem 5%;background:#0D0D0D;text-align:center;">
   <h2 style="font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;color:#fff;margin:0 0 1rem;">Bereit für mehr Sichtbarkeit?</h2>
@@ -150,10 +219,9 @@ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 ```
 
 ### Footer
-
 ```html
 <footer style="padding:2rem 5%;border-top:1px solid #E5E7EB;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
-  <div style="font-size:1rem;font-weight:800;color:#0D0D0D;">XPO<span style="color:#3F5137">Next</span></div>
+  <div style="font-size:1rem;font-weight:800;color:#0D0D0D;font-family:'Inter',sans-serif;">XPO<span style="color:#3F5137;">Next</span></div>
   <div style="display:flex;gap:1.5rem;">
     <a href="#" style="color:#9CA3AF;text-decoration:none;font-size:0.85rem;">Impressum</a>
     <a href="#" style="color:#9CA3AF;text-decoration:none;font-size:0.85rem;">Datenschutz</a>
@@ -163,10 +231,7 @@ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 </footer>
 ```
 
-## Full Page Template
-
-Every HTML page starts with this base:
-
+### HTML-Basis-Template
 ```html
 <!DOCTYPE html>
 <html lang="de">
@@ -196,23 +261,105 @@ Every HTML page starts with this base:
 </html>
 ```
 
-## Design Rules (always follow)
+---
 
-1. **Weißer Hintergrund** — kein Dunkel-Modus, keine bunten Hintergründe außer dem dunklen CTA-Block
-2. **Sehr fette Headlines** — font-weight 800 oder 900 immer für h1/h2
-3. **Akzentfarbe sparsam** — nur für einzelne Wörter in Headlines, Buttons, Icons, Badges
-4. **Viel Whitespace** — padding mindestens 4rem–5rem vertikal für Sections
-5. **Sticky Navigation** — immer oben fixiert mit weißem Hintergrund
-6. **Zwei CTA-Stile** — primär (grün ausgefüllt) + sekundär (weiß mit Border)
-7. **Karten** — weißer Hintergrund, 1px Border `#E5E7EB`, border-radius 12px
-8. **Responsive** — immer `grid-template-columns: repeat(auto-fit, minmax(Xpx, 1fr))` für Grids
-9. **Inter Font** — immer von Google Fonts laden
-10. **Logo-Format** — `XPO` in schwarz + `Next` in Akzentgrün, font-weight 800
+## 7. Anwendung: Präsentationen
 
-## Accent Color Variants
+Gilt für PPTX (python-pptx) und HTML-Präsentationen gleichermaßen.
 
-Standard:   #3F5137
-Dark hover: #2E3D28
-Light fill: #E8EDE6
-Text on light fill: #2E3D28
-```
+### Folien-Typen & Layout
+
+#### Titelfolie
+- Hintergrund: Weiß (`#FFFFFF`)
+- Logo: oben links, font-size 28pt
+- Headline (Präsentationstitel): links ausgerichtet, sehr groß (44–54pt, font-weight 900), Schlüsselwort in Grün
+- Untertitel: 18pt, `#4B5563`
+- Dünne grüne Linie (`#3F5137`, 3pt) als horizontaler Akzent unter dem Titel
+- Datum / Empfänger: unten links, 11pt, `#9CA3AF`
+
+#### Inhaltsfolie (Standard)
+- Hintergrund: Weiß
+- Logo: oben links, klein (16pt)
+- Seitennummer: unten rechts, 10pt, `#9CA3AF`
+- Section-Label (optional): oben, Badge-Stil mit grünem Hintergrund
+- Headline: 26–32pt, font-weight 800
+- Body / Bullets: 16–18pt, `#4B5563`, Zeilenabstand 1.4
+
+#### Abschnitts-Trennfolie
+- Hintergrund: `#0D0D0D` (dunkel)
+- Logo: oben links, weiß/grün
+- Abschnittsname: zentriert, 38–44pt, font-weight 900, weiß
+- Optional: grüne Linie als Dekorelement
+
+#### Abschlussfolie
+- Hintergrund: Weiß
+- Headline: "Fragen?" oder CTA-Text, sehr groß, Akzent in Grün
+- Kontakt: Name, E-Mail, Telefon — 16pt, `#4B5563`
+- Logo: mittig oder unten links
+
+### Präsentations-Regeln
+- Maximal 6 Bulletpoints pro Folie — lieber mehr Folien
+- Keine Bullet-Wände: Bullets sind kurz (max. 1 Zeile) + erklärende Notizen im Speaker-Bereich
+- Bilder und Icons immer in grünem Badge-Stil (`#E8EDE6` Hintergrund, border-radius)
+- Keine drop shadows, keine Verläufe, keine clipart-artigen Elemente
+- Tabellen: Header-Zeile mit `#3F5137` Hintergrund + weißer Text, Zeilen alternieren `#fff` / `#F9FAFB`
+
+---
+
+## 8. Anwendung: Dokumente (Angebote, Berichte, E-Mails)
+
+### Kopfzeile (jede Seite)
+- Links: XPONext Logo (XPO schwarz, Next grün, font-weight 800)
+- Rechts: Seitenzahl oder Dokumenttitel
+- Trennlinie darunter: 1pt, `#E5E7EB`
+
+### Angebots-Dokument Struktur
+1. Deckblatt — Logo, Titel, Empfänger, Datum
+2. Zusammenfassung — max. 1 Seite, das Wichtigste auf einen Blick
+3. Leistungen — klare Abschnitte mit H2-Überschriften
+4. Preise — Tabelle, sauber, kein Kleinstgedrucktes
+5. Nächste Schritte — nummeriert, konkret
+6. Kontakt & Impressum
+
+### Schriften in Dokumenten
+- Überschriften H1: 22pt, font-weight 800, `#0D0D0D`
+- Überschriften H2: 16pt, font-weight 700, `#0D0D0D`
+- Fließtext: 11pt, `#4B5563`, Zeilenabstand 1.5
+- Tabellen-Header: 10pt, weiß auf `#3F5137`
+
+### Hervorhebungen in Texten
+- Wichtige Begriffe: **fett**, niemals unterstrichen
+- Zahlen / Ergebnisse: Akzentgrün `#3F5137`, fett
+- Niemals kursiv für ganze Sätze
+
+---
+
+## 9. Design Don'ts (gilt für alle Medien)
+
+- ❌ Kein Dunkel-Modus — außer explizit als dunkler CTA-Block / Trennfolie
+- ❌ Keine bunten Hintergründe (lila, blau, rot, etc.)
+- ❌ Keine drop shadows oder Verläufe
+- ❌ Kein Logo zentriert (außer spezifisch auf Titelfolie)
+- ❌ Nicht die gesamte Headline in Grün
+- ❌ Kein font-weight unter 700 für Headlines
+- ❌ Keine anderen Schriften als Inter
+- ❌ Keine Bilder mit weißem Hintergrund freigestellt (wirkt billig) — lieber auf `#F9FAFB`
+- ❌ Kein Clipart, keine Stock-Icons mit Farbverläufen — nur Emojis oder einfache Flat-Icons
+
+---
+
+## 10. Schnellreferenz
+
+| Element | Wert |
+|---|---|
+| Primärfarbe | `#3F5137` |
+| Hintergrund | `#FFFFFF` |
+| Dunkel-Block | `#0D0D0D` |
+| Schrift | Inter (Google Fonts) |
+| Logo | `XPO` #0D0D0D + `Next` #3F5137, font-weight 800 |
+| Logo-Position | Immer oben links |
+| H1 Gewicht | 900 |
+| H2 Gewicht | 800 |
+| Border-radius Cards | 12px |
+| Button border-radius | 8px |
+| Max. Content-Breite | 1200px |
