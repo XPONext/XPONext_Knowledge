@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>edoo architects × XPONext</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      /* edoo palette – charcoal + white + XPONext green als Akzent */
+      --edoo-dark: #1A1A1A;
+      --edoo-mid: #4A4A4A;
+      --edoo-light: #F5F5F5;
+      --xpo-green: #3F5137;
+      --xpo-green-light: #E8EDE6;
+      --border: #E0E0E0;
+      --text-muted: #9A9A9A;
+      --bg: #FFFFFF;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--edoo-dark); -webkit-font-smoothing: antialiased; overflow-x: hidden; font-weight: 300; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 56px; }
+    .nav-left { display: flex; align-items: center; gap: 2rem; }
+    .nav-logo-edoo { font-size: 0.85rem; font-weight: 600; color: var(--edoo-dark); letter-spacing: 0.12em; text-transform: uppercase; }
+    .nav-logo-edoo span { color: var(--text-muted); font-weight: 300; }
+    .nav-separator { width: 1px; height: 16px; background: var(--border); }
+    .nav-logo-xpo { font-size: 0.78rem; font-weight: 600; color: var(--xpo-green); letter-spacing: 0.08em; text-transform: uppercase; }
+    .nav-center { display: flex; gap: 6px; align-items: center; }
+    .nav-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); border: none; cursor: pointer; transition: background 0.2s, transform 0.2s; }
+    .nav-dot.active { background: var(--edoo-dark); transform: scale(1.4); }
+    .nav-label { font-size: 0.72rem; font-weight: 400; color: var(--text-muted); letter-spacing: 0.06em; white-space: nowrap; }
+    .progress-bar { position: fixed; bottom: 0; left: 0; height: 2px; background: var(--edoo-dark); transition: width 0.3s ease; z-index: 200; }
+    .slide-counter { position: fixed; bottom: 16px; right: 24px; font-size: 0.68rem; font-weight: 400; color: var(--text-muted); z-index: 200; letter-spacing: 0.04em; }
+
+    .slide { padding: 96px 6% 80px; max-width: 1080px; margin: 0 auto; border-bottom: 1px solid var(--border); opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .slide:last-of-type { border-bottom: none; }
+    .slide.visible { opacity: 1; transform: translateY(0); }
+    .slide-center { display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .slide-dark { background: var(--edoo-dark); max-width: none; border-bottom: none; padding-left: 10%; padding-right: 10%; }
+    .slide-dark .inner { max-width: 1080px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+    .eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.2rem; }
+    .eyebrow-green { color: var(--xpo-green); }
+    .eyebrow-light { color: rgba(255,255,255,0.4); }
+
+    h1 { font-size: clamp(2.8rem, 5.5vw, 4.2rem); font-weight: 300; line-height: 1.06; letter-spacing: -0.03em; color: var(--edoo-dark); margin-bottom: 1.4rem; }
+    h1 strong { font-weight: 700; }
+    h1 em, h2 em { color: var(--xpo-green); font-style: normal; font-weight: 700; }
+    h2 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.03em; color: var(--edoo-dark); margin-bottom: 1rem; }
+    h2 strong { font-weight: 700; }
+    h2.light { color: #fff; } h2.light em { color: #9dc491; }
+    h3 { font-size: 0.92rem; font-weight: 600; color: var(--edoo-dark); margin-bottom: 0.4rem; letter-spacing: 0.01em; }
+    p.body { font-size: 1rem; line-height: 1.78; color: var(--edoo-mid); max-width: 600px; font-weight: 300; }
+    p.hero-sub { font-size: clamp(1rem, 1.8vw, 1.12rem); color: var(--edoo-mid); max-width: 500px; text-align: center; line-height: 1.7; font-weight: 300; }
+    .divider { width: 32px; height: 1px; background: var(--edoo-dark); margin: 1.2rem 0 1.6rem; }
+    .divider-center { margin: 1.2rem auto 1.6rem; }
+    .divider-green { background: var(--xpo-green); }
+
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; margin-top: 2rem; background: var(--border); border: 1px solid var(--border); }
+    .card { background: var(--bg); padding: 1.6rem; }
+    .card-num { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 1rem; }
+    .card-num.green { color: var(--xpo-green); }
+
+    .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; margin-top: 2rem; background: var(--border); border: 1px solid var(--border); }
+    .stat-box { background: var(--bg); padding: 1.4rem 1.6rem; }
+    .stat-num { font-size: 2.4rem; font-weight: 700; color: var(--edoo-dark); letter-spacing: -0.04em; line-height: 1; }
+    .stat-num.green { color: var(--xpo-green); }
+    .stat-label { font-size: 0.8rem; color: var(--edoo-mid); margin-top: 0.5rem; line-height: 1.5; font-weight: 300; }
+
+    .steps { display: flex; flex-direction: column; gap: 1px; margin-top: 2rem; background: var(--border); border: 1px solid var(--border); }
+    .step { display: flex; gap: 1.6rem; align-items: flex-start; background: var(--bg); padding: 1.2rem 1.6rem; }
+    .step-num { flex-shrink: 0; font-size: 0.68rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.1em; padding-top: 0.15rem; }
+
+    .highlight { background: var(--xpo-green-light); border-left: 2px solid var(--xpo-green); padding: 1.4rem 1.6rem; margin-top: 1.75rem; }
+    .highlight h3 { color: var(--xpo-green); margin-bottom: 0.3rem; font-size: 0.85rem; letter-spacing: 0.04em; text-transform: uppercase; }
+    .highlight p { color: var(--edoo-mid); font-size: 0.94rem; max-width: none; line-height: 1.65; font-weight: 300; }
+
+    .tag-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .tag { background: transparent; border: 1px solid var(--border); padding: 4px 12px; border-radius: 0; font-size: 0.76rem; color: var(--edoo-mid); letter-spacing: 0.04em; font-weight: 400; }
+    .tag.dark { border-color: var(--edoo-dark); color: var(--edoo-dark); font-weight: 600; }
+    .tag.green { background: var(--xpo-green-light); border-color: var(--xpo-green); color: var(--xpo-green); font-weight: 600; }
+
+    .cta-btn { display: inline-block; background: #fff; color: var(--edoo-dark); font-size: 0.88rem; font-weight: 600; padding: 0.85rem 2rem; border-radius: 0; text-decoration: none; transition: background 0.2s; letter-spacing: 0.04em; border: 1px solid rgba(255,255,255,0.3); }
+    .cta-btn:hover { background: rgba(255,255,255,0.88); }
+    .cta-btn-outline { display: inline-block; background: transparent; color: rgba(255,255,255,0.7); font-size: 0.88rem; font-weight: 400; padding: 0.85rem 2rem; border-radius: 0; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); letter-spacing: 0.04em; }
+    .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    @media (max-width: 680px) { nav .nav-label { display: none; } }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-left">
+    <div class="nav-logo-edoo">edoo<span>_architects</span></div>
+    <div class="nav-separator"></div>
+    <div class="nav-logo-xpo">XPONext</div>
+  </div>
+  <div class="nav-center" id="navDots"></div>
+  <div class="nav-label" id="navLabel"></div>
+</nav>
+<div class="progress-bar" id="progressBar"></div>
+<div class="slide-counter" id="slideCounter"></div>
+
+<!-- SLIDE 1: INTRO -->
+<div class="slide slide-center" data-slide="1" data-label="Intro" style="padding-top:120px;">
+  <div style="font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;letter-spacing:-0.01em;color:var(--edoo-dark);margin-bottom:0.5rem;">edoo architects</div>
+  <div style="font-size:0.8rem;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:2.5rem;">Essen · Ein Konzept von XPONext</div>
+  <h1><strong>Online sichtbar</strong><br>für die, die Sie<br><em>suchen.</em></h1>
+  <p class="hero-sub" style="margin-top:0.75rem;">Wir sind XPONext. Dieses Konzept zeigt, wie edoo architects bei Google, bei ChatGPT und bei jedem gefunden wird, der nach Bildungsarchitektur in Essen sucht.</p>
+  <div class="tag-row" style="justify-content:center; margin-top:2rem;">
+    <span class="tag dark">Lernlandschaften</span>
+    <span class="tag dark">KiTa-Architektur</span>
+    <span class="tag dark">Essen</span>
+    <span class="tag dark">Bildungsbauten</span>
+  </div>
+  <div class="tag-row" style="justify-content:center; margin-top:0.6rem;">
+    <span class="tag green">SEO</span>
+    <span class="tag green">GEO</span>
+    <span class="tag green">Laufende Betreuung</span>
+  </div>
+</div>
+
+<!-- SLIDE 2: STATUS QUO -->
+<div class="slide" data-slide="2" data-label="Was wir gesehen haben">
+  <div class="eyebrow eyebrow-green">Was wir gesehen haben</div>
+  <h2><strong>Starke Nische.</strong><br>Online noch nicht ausgeschöpft.</h2>
+  <div class="divider divider-green"></div>
+  <p class="body">edoo architects hat eine klare Spezialisierung die es so kaum gibt: Lernlandschaften und Bildungsarchitektur. Diese Nische ist online fast unbesetzt – und genau das ist die Chance.</p>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <div class="stat-num">Seite 2</div>
+      <div class="stat-label">Für „Architekt Essen Rüttenscheid". Verzeichnisse und Mitbewerber stehen vor edoo architects – obwohl die Nische einzigartig ist.</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num green">0</div>
+      <div class="stat-label">GEO-Präsenz. Wer ChatGPT fragt „Welcher Architekt plant KiTas in Essen?" bekommt keinen Hinweis auf edoo architects.</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">—</div>
+      <div class="stat-label">News & Presse: leer. Kein Blog, keine Pressemitteilungen – ein Bereich, der für SEO und Nischen-Sichtbarkeit großes Potenzial hätte.</div>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <h3>Die Chance</h3>
+    <p>„Architekt Lernlandschaften Essen", „KiTa-Architekt NRW", „Bildungsarchitektur Essen" – kaum jemand optimiert für diese Begriffe. edoo architects könnte hier der klare erste Treffer sein.</p>
+  </div>
+</div>
+
+<!-- SLIDE 3: WAS WIR MACHEN -->
+<div class="slide" data-slide="3" data-label="Was XPONext macht">
+  <div class="eyebrow">Was XPONext macht</div>
+  <h2>SEO & GEO.<br><em>Aus einer Hand.</em></h2>
+  <div class="divider"></div>
+  <p class="body">Wir sorgen dafür, dass edoo architects bei Google und in KI-Suchen genau dann erscheint, wenn jemand nach Bildungsarchitektur in Essen sucht.</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-num green">01 — SEO</div>
+      <h3>Bei Google gefunden werden</h3>
+      <p style="font-size:0.9rem;max-width:none;color:var(--edoo-mid);line-height:1.65;font-weight:300;margin-top:0.4rem;">Technische und inhaltliche Optimierung auf die spezifischen Suchbegriffe von edoo architects. „Lernlandschaften Architekt NRW" statt nur „Architekt Essen" – gezieltere Suchen, qualifiziertere Anfragen.</p>
+    </div>
+    <div class="card">
+      <div class="card-num green">02 — GEO</div>
+      <h3>In KI-Suchen präsent sein</h3>
+      <p style="font-size:0.9rem;max-width:none;color:var(--edoo-mid);line-height:1.65;font-weight:300;margin-top:0.4rem;">Immer mehr Auftraggeber fragen ChatGPT oder Google AI nach Architekten. GEO optimiert edoo architects für genau diese Antworten – ein Kanal, den aktuell fast niemand in der Nische Bildungsarchitektur abdeckt.</p>
+    </div>
+    <div class="card">
+      <div class="card-num green">03 — Google Ads</div>
+      <h3>Sofort oben – messbar</h3>
+      <p style="font-size:0.9rem;max-width:none;color:var(--edoo-mid);line-height:1.65;font-weight:300;margin-top:0.4rem;">Während SEO und GEO langfristig wirken, bringt Google Ads edoo architects bei gezielten Suchen sofort auf Platz 1. Jede Kampagne ist transparent nachvollziehbar.</p>
+    </div>
+    <div class="card">
+      <div class="card-num green">04 — Content</div>
+      <h3>News & Presse mit Leben füllen</h3>
+      <p style="font-size:0.9rem;max-width:none;color:var(--edoo-mid);line-height:1.65;font-weight:300;margin-top:0.4rem;">Der leere News-Bereich ist eine ungenutzte SEO-Fläche. Regelmäßige Beiträge zu Projekten und Bildungsarchitektur stärken das Ranking dauerhaft.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4: ZUSAMMENARBEIT -->
+<div class="slide" data-slide="4" data-label="Zusammenarbeit">
+  <div class="eyebrow">Wie wir arbeiten</div>
+  <h2>Langfristig.<br><strong>Partnerschaftlich.</strong></h2>
+  <div class="divider"></div>
+  <p class="body">Wir arbeiten dauerhaft mit unseren Kunden zusammen – kein einmaliges Projekt, sondern eine Zusammenarbeit die wächst.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div><h3>Kennenlernen, ca. 30 Minuten</h3><p style="font-size:0.9rem;max-width:none;color:var(--edoo-mid);font-weight:300;margin-top:0.2rem;line-height:1.6;">Wir verstehen edoo architects, die Projekte und die Zielgruppe – und zeigen konkret, was wir tun würden.</p></div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div><h3>Setup in 1 bis 2 Wochen</h3><p style="font-size:0.9rem;max-width:none;color:var(--edoo-mid);font-weight:300;margin-top:0.2rem;line-height:1.6;">SEO-Grundlage, GEO-Setup, Meta-Daten und Schema-Markup werden eingerichtet. Sauber und ohne Eingriff in laufende Prozesse.</p></div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div><h3>Laufende Optimierung</h3><p style="font-size:0.9rem;max-width:none;color:var(--edoo-mid);font-weight:300;margin-top:0.2rem;line-height:1.6;">Monatliche Updates, neue Inhalte, GEO-Anpassungen. Was sich in Suchtrends und KI-Systemen verändert, fließt direkt für edoo architects ein.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5: CTA -->
+<div class="slide slide-dark slide-center" data-slide="5" data-label="Kontakt">
+  <div class="inner">
+    <div class="eyebrow eyebrow-light">XPONext × edoo_architects</div>
+    <h2 class="light"><strong>Wir freuen uns</strong><br>auf das <em>Gespräch.</em></h2>
+    <div class="divider divider-center" style="background:rgba(255,255,255,0.2);"></div>
+    <p style="color:rgba(255,255,255,0.5); max-width:440px; line-height:1.75; font-size:0.95rem; font-weight:300;">30 Minuten. Kein Druck. Wir zeigen konkret, was für edoo architects möglich ist.</p>
+    <div class="btn-row" style="justify-content:center; margin-top:2rem;">
+      <a class="cta-btn" href="https://www.xponext.de" target="_blank">Gespräch vereinbaren</a>
+      <a class="cta-btn-outline" href="https://www.xponext.de" target="_blank">www.xponext.de</a>
+    </div>
+    <p style="margin-top:3rem; font-size:0.72rem; color:rgba(255,255,255,0.2); letter-spacing:0.06em;">© 2026 XPONext GbR · Erstellt für edoo architects GmbH, Essen</p>
+  </div>
+</div>
+
+<div style="position:fixed;bottom:14px;left:20px;font-size:0.65rem;font-weight:800;letter-spacing:0.1em;color:#3F5137;opacity:0.5;z-index:200;">XPO·NEXT</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  const navDots = document.getElementById('navDots');
+  const navLabel = document.getElementById('navLabel');
+  const progressBar = document.getElementById('progressBar');
+  const slideCounter = document.getElementById('slideCounter');
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'nav-dot';
+    dot.setAttribute('aria-label', `Folie ${i + 1}`);
+    dot.addEventListener('click', () => slides[i].scrollIntoView({ behavior: 'smooth' }));
+    navDots.appendChild(dot);
+  });
+  const dots = document.querySelectorAll('.nav-dot');
+  function updateUI() {
+    let current = 0, maxV = 0;
+    slides.forEach((s, i) => {
+      const r = s.getBoundingClientRect();
+      const v = Math.max(0, Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0)) / window.innerHeight;
+      if (v > maxV) { maxV = v; current = i; }
+      if (r.top < window.innerHeight * 0.82) s.classList.add('visible');
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    navLabel.textContent = slides[current]?.dataset.label || '';
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    progressBar.style.width = (pct * 100) + '%';
+    slideCounter.textContent = `${current + 1} / ${total}`;
+  }
+  document.addEventListener('keydown', e => {
+    const cur = [...slides].findIndex(s => { const r = s.getBoundingClientRect(); return r.top <= window.innerHeight / 2 && r.bottom >= window.innerHeight / 2; });
+    if ((e.key === 'ArrowDown' || e.key === 'ArrowRight') && cur < total - 1) slides[cur + 1].scrollIntoView({ behavior: 'smooth' });
+    if ((e.key === 'ArrowUp' || e.key === 'ArrowLeft') && cur > 0) slides[cur - 1].scrollIntoView({ behavior: 'smooth' });
+  });
+  window.addEventListener('scroll', updateUI, { passive: true });
+  updateUI();
+</script>
+</body>
+</html>

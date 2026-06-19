@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bestattungen Orlob × XPONext</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent: #3F5137; --accent-dark: #2E3D28; --accent-light: #E8EDE6;
+      --text-primary: #0D0D0D; --text-body: #4B5563; --text-muted: #9CA3AF;
+      --bg: #FFFFFF; --bg-subtle: #F9FAFB; --bg-dark: #0D0D0D; --border: #E5E7EB;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text-primary); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 58px; }
+    .nav-logo { font-size: 1.15rem; font-weight: 800; color: var(--text-primary); }
+    .nav-logo span { color: var(--accent); }
+    .nav-center { display: flex; gap: 6px; align-items: center; }
+    .nav-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); border: none; cursor: pointer; transition: background 0.2s, transform 0.2s; }
+    .nav-dot.active { background: var(--accent); transform: scale(1.3); }
+    .nav-label { font-size: 0.76rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.04em; white-space: nowrap; }
+    .progress-bar { position: fixed; bottom: 0; left: 0; height: 3px; background: var(--accent); transition: width 0.3s ease; z-index: 200; }
+    .slide-counter { position: fixed; bottom: 14px; right: 20px; font-size: 0.72rem; font-weight: 600; color: var(--text-muted); z-index: 200; }
+    .slide { padding: 80px 5% 72px; max-width: 1100px; margin: 0 auto; border-bottom: 1px solid var(--border); opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .slide:last-of-type { border-bottom: none; }
+    .slide.visible { opacity: 1; transform: translateY(0); }
+    .slide-center { display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .slide-dark { background: var(--bg-dark); max-width: none; border-bottom: none; padding-left: 10%; padding-right: 10%; }
+    .slide-dark .inner { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    .eyebrow-dark { color: #7faa74; }
+    h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; line-height: 1.08; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: 1.2rem; }
+    h1 em, h2 em { color: var(--accent); font-style: normal; }
+    h2 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: 0.9rem; }
+    h2.light { color: #fff; } h2.light em { color: #7faa74; }
+    h3 { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.35rem; }
+    p.body { font-size: 1rem; line-height: 1.72; color: var(--text-body); max-width: 620px; }
+    p.hero-sub { font-size: clamp(1rem, 1.8vw, 1.15rem); color: var(--text-body); max-width: 520px; text-align: center; line-height: 1.65; }
+    .divider { width: 40px; height: 3px; background: var(--accent); border-radius: 2px; margin: 1rem 0 1.4rem; }
+    .divider-center { margin: 1rem auto 1.4rem; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.75rem; }
+    .card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem; }
+    .card.featured { border-color: var(--accent); border-width: 2px; }
+    .card-bar { width: 28px; height: 3px; background: var(--accent); border-radius: 2px; margin-bottom: 0.9rem; }
+    .card-bar.wide { width: 40px; background: var(--accent-dark); }
+    .highlight { background: var(--accent-light); border: 1px solid rgba(63,81,55,0.22); border-radius: 12px; padding: 1.4rem 1.6rem; margin-top: 1.5rem; }
+    .highlight h3 { color: var(--accent-dark); margin-bottom: 0.3rem; }
+    .highlight p { color: var(--text-body); font-size: 0.95rem; max-width: none; line-height: 1.65; }
+    .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1.75rem; }
+    .stat-box { background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem 1.4rem; }
+    .stat-num { font-size: 2.2rem; font-weight: 900; color: var(--accent); letter-spacing: -0.04em; line-height: 1; }
+    .stat-label { font-size: 0.82rem; color: var(--text-body); margin-top: 0.4rem; line-height: 1.5; }
+    .steps { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.6rem; }
+    .step { display: flex; gap: 1.2rem; align-items: flex-start; background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.3rem; }
+    .step-num { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 900; font-size: 0.82rem; display: flex; align-items: center; justify-content: center; }
+    .tag-row { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .tag { background: var(--bg-subtle); border: 1px solid var(--border); padding: 5px 14px; border-radius: 99px; font-size: 0.8rem; color: var(--text-body); }
+    .tag.green { background: var(--accent-light); border-color: rgba(63,81,55,0.3); color: var(--accent-dark); font-weight: 600; }
+    .cta-btn { display: inline-block; background: var(--accent); color: #fff; font-size: 1rem; font-weight: 700; padding: 0.9rem 2rem; border-radius: 8px; text-decoration: none; transition: opacity 0.2s; }
+    .cta-btn:hover { opacity: 0.85; }
+    .cta-btn-outline { display: inline-block; background: transparent; color: #fff; font-size: 1rem; font-weight: 500; padding: 0.9rem 2rem; border-radius: 8px; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); }
+    .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    @media (max-width: 680px) { nav .nav-label { display: none; } }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">XPO<span>Next</span></div>
+  <div class="nav-center" id="navDots"></div>
+  <div class="nav-label" id="navLabel"></div>
+</nav>
+<div class="progress-bar" id="progressBar"></div>
+<div class="slide-counter" id="slideCounter"></div>
+
+<!-- SLIDE 1: INTRO -->
+<div class="slide slide-center" data-slide="1" data-label="Intro" style="padding-top:110px;">
+  <div class="eyebrow">Für Bestattungen Orlob · Düsseldorf</div>
+  <h1>Eine gute Website.<br><em>Gefunden werden ist das Nächste.</em></h1>
+  <p class="hero-sub" style="margin-top:0.5rem;">Ein Konzept für mehr Sichtbarkeit in Düsseldorf – mit Fokus auf das, was Ihre aktuelle Betreuung noch nicht abdeckt.</p>
+  <div class="tag-row" style="justify-content:center; margin-top:1.75rem;">
+    <span class="tag">Düsseldorf</span>
+    <span class="tag">Ratingen & Neuss</span>
+    <span class="tag">Seelenwärmer</span>
+    <span class="tag">24/7 erreichbar</span>
+  </div>
+  <div class="tag-row" style="justify-content:center; margin-top:0.6rem;">
+    <span class="tag green">SEO & GEO</span>
+    <span class="tag green">Google Ads</span>
+    <span class="tag green">Laufende Optimierung</span>
+  </div>
+</div>
+
+<!-- SLIDE 2: STATUS QUO -->
+<div class="slide" data-slide="2" data-label="Status Quo">
+  <div class="eyebrow">Analyse</div>
+  <h2>Website vorhanden.<br><em>Bei Google trotzdem nicht vorne.</em></h2>
+  <div class="divider"></div>
+  <p class="body">Bestattungen Orlob hat eine gepflegte Website und aktive Betreuung. Trotzdem: Bei „Bestatter Düsseldorf" erscheinen Verzeichnisse und Mitbewerber auf den ersten Plätzen – Orlob ist nicht dabei. Das liegt nicht an der Website, sondern an dem, was dahinter fehlt.</p>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <div class="stat-num">Nicht<br style="line-height:0.6">sichtbar</div>
+      <div class="stat-label">Für „Bestatter Düsseldorf" auf Seite 1. Wer in Düsseldorf online sucht, findet Bestattungen Orlob dort nicht – trotz vorhandener Website.</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">90%</div>
+      <div class="stat-label">aller Klicks gehen an die ersten drei Google-Ergebnisse. Eine Website allein reicht nicht – sie muss auch gefunden werden.</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">0</div>
+      <div class="stat-label">Anfragen über KI-Suchen. Wer ChatGPT fragt „Welcher Bestatter ist gut in Düsseldorf?" bekommt einen anderen Namen – das ist der blinde Fleck der meisten Web-Betreuer.</div>
+    </div>
+  </div>
+
+  <div class="cards" style="margin-top:1.5rem;">
+    <div class="card">
+      <div class="card-bar"></div>
+      <h3>Zwei Domains, geteilte Stärke</h3>
+      <p style="font-size:0.91rem;max-width:none;color:var(--text-body);">orlob.de und bestattungen-orlob.de existieren parallel. Google verteilt die Autorität auf beide – statt eine starke Domain aufzubauen, die bei Suchanfragen klar gewinnt.</p>
+    </div>
+    <div class="card">
+      <div class="card-bar"></div>
+      <h3>GEO ist ein blinder Fleck</h3>
+      <p style="font-size:0.91rem;max-width:none;color:var(--text-body);">Klassische Web-Betreuung deckt Website-Pflege ab – nicht die Optimierung für KI-Suchen. Wer über ChatGPT oder Google AI nach einem Bestatter in Düsseldorf fragt, bekommt einen anderen Namen.</p>
+    </div>
+    <div class="card">
+      <div class="card-bar"></div>
+      <h3>Kein Kanal für dringende Suchen</h3>
+      <p style="font-size:0.91rem;max-width:none;color:var(--text-body);">Familien suchen oft in akuten Momenten. Google Ads sorgt dafür, dass Bestattungen Orlob in genau diesem Moment ganz oben steht – unabhängig vom organischen Ranking.</p>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <h3>Was das bedeutet</h3>
+    <p>Eine gepflegte Website ist die Grundlage – aber Sichtbarkeit bei Google, in KI-Suchen und über Google Ads ist eine eigene Disziplin. Genau hier setzt XPONext an, ergänzend zu Ihrer bestehenden Betreuung.</p>
+  </div>
+</div>
+
+<!-- SLIDE 3: LEISTUNGEN -->
+<div class="slide" data-slide="3" data-label="Leistungen">
+  <div class="eyebrow">Leistungen</div>
+  <h2>Was Ihre aktuelle Betreuung<br><em>noch nicht abdeckt.</em></h2>
+  <div class="divider"></div>
+  <p class="body">XPONext arbeitet ergänzend – nicht als Ersatz. Wir übernehmen die Bereiche, die über klassische Website-Pflege hinausgehen.</p>
+
+  <div class="cards">
+    <div class="card featured">
+      <div class="card-bar wide"></div>
+      <h3>GEO – der neue SEO</h3>
+      <p style="font-size:0.91rem;max-width:none;color:var(--text-body);">Immer mehr Menschen fragen ChatGPT, Siri oder Google AI direkt nach Empfehlungen. GEO sorgt dafür, dass Bestattungen Orlob in diesen Antworten erscheint – ein Kanal, den aktuell kaum ein Mitbewerber in Düsseldorf abdeckt.</p>
+    </div>
+    <div class="card">
+      <div class="card-bar"></div>
+      <h3>Lokales SEO</h3>
+      <p style="font-size:0.91rem;max-width:none;color:var(--text-body);">Technische und inhaltliche Optimierung, damit bestattungen-orlob.de bei „Bestatter Düsseldorf" auf Seite 1 erscheint. Inklusive Domain-Konsolidierung für mehr Stärke.</p>
+    </div>
+    <div class="card">
+      <div class="card-bar"></div>
+      <h3>Google Ads</h3>
+      <p style="font-size:0.91rem;max-width:none;color:var(--text-body);">Sofort sichtbar, wenn Familien dringend suchen. Kampagnenerstellung und Pflege – unabhängig davon, wie sich das organische Ranking entwickelt.</p>
+    </div>
+    <div class="card">
+      <div class="card-bar"></div>
+      <h3>Laufende Optimierung</h3>
+      <p style="font-size:0.91rem;max-width:none;color:var(--text-body);">GEO und SEO sind kein einmaliges Projekt. Neue Entwicklungen in KI-Suchen, Algorithmus-Updates und lokale Signale werden fortlaufend eingearbeitet.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4: ZUSAMMENARBEIT -->
+<div class="slide" data-slide="4" data-label="Zusammenarbeit">
+  <div class="eyebrow">Zusammenarbeit</div>
+  <h2>Ergänzend.<br><em>Nicht ersetzend.</em></h2>
+  <div class="divider"></div>
+  <p class="body">XPONext arbeitet neben Ihrer bestehenden Website-Betreuung – und übernimmt die Bereiche, die dort nicht abgedeckt werden. Langfristig, direkt erreichbar.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div><h3>Erstgespräch, ca. 30 Minuten</h3><p style="font-size:0.91rem;max-width:none;color:var(--text-body);margin-top:0.2rem;">Wir analysieren Ihre aktuelle Sichtbarkeit und zeigen konkret, wo das größte Potenzial liegt.</p></div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div><h3>Setup in 1 bis 2 Wochen</h3><p style="font-size:0.91rem;max-width:none;color:var(--text-body);margin-top:0.2rem;">SEO-Grundlage, GEO-Setup und Google Ads werden eingerichtet – ohne Eingriff in Ihre bestehende Website-Struktur.</p></div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div><h3>Laufende Optimierung</h3><p style="font-size:0.91rem;max-width:none;color:var(--text-body);margin-top:0.2rem;">Monatliche SEO- und GEO-Updates, Ads-Pflege, neue KI-Entwicklungen direkt einarbeiten. Ein fester Ansprechpartner, direkt erreichbar.</p></div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div><h3>Entwicklungen fließen direkt ein</h3><p style="font-size:0.91rem;max-width:none;color:var(--text-body);margin-top:0.2rem;">GEO ist ein sich schnell entwickelndes Feld. Was sich verändert, wird für Bestattungen Orlob sofort umgesetzt.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5: CTA -->
+<div class="slide slide-dark slide-center" data-slide="5" data-label="Kontakt">
+  <div class="inner">
+    <div class="eyebrow eyebrow-dark">XPONext · Bestattungen Orlob</div>
+    <h2 class="light">Der nächste Schritt.<br><em>Ein Gespräch.</em></h2>
+    <div class="divider divider-center"></div>
+    <p style="color:var(--text-muted); max-width:460px; line-height:1.7; font-size:1rem;">30 Minuten reichen, um zu verstehen, ob und wie wir zusammenarbeiten können.</p>
+    <div class="btn-row" style="justify-content:center; margin-top:1.75rem;">
+      <a class="cta-btn" href="https://www.xponext.de" target="_blank">Gespräch vereinbaren</a>
+      <a class="cta-btn-outline" href="https://www.xponext.de" target="_blank">www.xponext.de</a>
+    </div>
+    <p style="margin-top:2.5rem; font-size:0.76rem; color:#444;">© 2026 XPONext GbR · Erstellt für Bestattungen Orlob, Düsseldorf</p>
+  </div>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  const navDots = document.getElementById('navDots');
+  const navLabel = document.getElementById('navLabel');
+  const progressBar = document.getElementById('progressBar');
+  const slideCounter = document.getElementById('slideCounter');
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'nav-dot';
+    dot.setAttribute('aria-label', `Folie ${i + 1}`);
+    dot.addEventListener('click', () => slides[i].scrollIntoView({ behavior: 'smooth' }));
+    navDots.appendChild(dot);
+  });
+  const dots = document.querySelectorAll('.nav-dot');
+  function updateUI() {
+    let current = 0, maxV = 0;
+    slides.forEach((s, i) => {
+      const r = s.getBoundingClientRect();
+      const v = Math.max(0, Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0)) / window.innerHeight;
+      if (v > maxV) { maxV = v; current = i; }
+      if (r.top < window.innerHeight * 0.82) s.classList.add('visible');
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    navLabel.textContent = slides[current]?.dataset.label || '';
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    progressBar.style.width = (pct * 100) + '%';
+    slideCounter.textContent = `${current + 1} / ${total}`;
+  }
+  document.addEventListener('keydown', e => {
+    const cur = [...slides].findIndex(s => { const r = s.getBoundingClientRect(); return r.top <= window.innerHeight / 2 && r.bottom >= window.innerHeight / 2; });
+    if ((e.key === 'ArrowDown' || e.key === 'ArrowRight') && cur < total - 1) slides[cur + 1].scrollIntoView({ behavior: 'smooth' });
+    if ((e.key === 'ArrowUp' || e.key === 'ArrowLeft') && cur > 0) slides[cur - 1].scrollIntoView({ behavior: 'smooth' });
+  });
+  window.addEventListener('scroll', updateUI, { passive: true });
+  updateUI();
+</script>
+</body>
+</html>

@@ -62,7 +62,13 @@ Stelle fest:
 - Gibt es einen Google Business-Eintrag?
 - Erscheinen Wettbewerber prominent?
 
-Notiere die Ranking-Position (z.B. „Seite 2, Position 4" oder „nicht auffindbar") – kommt in Slide 2.
+Notiere die Ranking-Position so konkret wie möglich – kommt in Slide 2.
+
+**Wichtig:** Immer die genaue Position angeben, nie nur „nicht sichtbar". Konkrete Zahlen sind deutlich eindrucksvoller:
+- Erscheinen sie auf Seite 1? → „Position 7" oder „Position 9"
+- Nicht auf Seite 1? → Zähle durch: wenn 7 Ergebnisse auf Seite 1, dann starten sie ab „Seite 2, Position 1" usw.
+- Beispiele: „Seite 2, Position 3" / „Position 11" / „Seite 3"
+- Nur wenn wirklich gar nicht auffindbar: „Nicht auffindbar"
 
 ---
 
@@ -74,9 +80,17 @@ Fülle das Template unten mit den gesammelten Daten und speichere die Datei unte
 **Befüllungsregeln:**
 - Ersetze alle `[PLATZHALTER]` mit echten Werten
 - Slide 2 (Status Quo): Verwende die 3–4 stärksten Mängel aus der Analyse + die Ranking-Position
-- Halte den Text knapp und direkt – keine langen Absätze
+- Halte den Text knapp und direkt – keine langen Absätze, keine Emojis, keine Bindestriche in Headlines
 - Behalte die Slide-Struktur exakt bei (5 Slides)
 - Wenn Preise gewünscht: Ergänze in Slide 4 die Preis-Box (siehe Ende dieses Dokuments)
+
+**Kunden- und Projektbezug (immer anwenden):**
+Digitale Fachbegriffe niemals technisch stehen lassen – immer in verlorene oder gewonnene Aufträge übersetzen.
+- NICHT „0 GEO-Präsenz" → SONDERN: „0 Aufträge über KI-Suchen. Wer heute ‚Bestatter Iserlohn' bei ChatGPT eingibt, bekommt einen anderen Namen."
+- NICHT „Keine Meta-Description" → SONDERN: „Google schreibt Ihren Eintrag selbst – der erste Eindruck bei der Suche liegt nicht in Ihrer Hand."
+- NICHT „Keine Alt-Texte" → SONDERN: „Ihre Projektbilder sind für Google unsichtbar – direkter Verlust an Sichtbarkeit."
+- GEO für Kunden die SEO kennen, GEO nicht: „GEO ist der neue SEO. Wer ChatGPT oder Google AI fragt ‚Welcher Bestatter ist gut in Iserlohn?' – der bekommt einen Namen. Das kann Ihrer sein."
+- Stat-Labels immer mit Konsequenz für den Kunden: nicht was die Zahl bedeutet, sondern was sie kostet oder bringt.
 
 ---
 
@@ -350,14 +364,45 @@ Fülle das Template unten mit den gesammelten Daten und speichere die Datei unte
 
 ## Wenn Preise gewünscht sind
 
-Füge diesen Block am Ende von Slide 4 (vor `</div>`) ein:
+**Immer als gestaffelte Pakete darstellen – niemals nur einen Preis.**
+Kunden wählen gerne zwischen Optionen. Das erhöht die Abschlussrate und gibt dem Empfänger das Gefühl von Kontrolle.
+
+**Standard-Paketstruktur:**
+
+| Paket | Preis | Inhalt |
+|---|---|---|
+| Starter | €100/Monat | Kostenlose Website (statt €800) + Aktualisierungen (Bilder, Texte, Wartung) |
+| Growth | €150/Monat | Starter + monatliche SEO & GEO Pflege + neue KI-Entwicklungen einarbeiten + kurzer Update-Call |
+| Pro | €250/Monat | Growth + Google Ads Kampagnenmanagement + monatliches Reporting |
+| Nur Website | €800 einmalig | Website ohne Retainer, keine laufende Betreuung |
+
+**Placement:** Pakete früh platzieren (Slide 3), damit der Empfänger nicht erst alles durchscrollen muss.
+
+---
+
+## Branding & Design-Regeln (immer einhalten)
+
+**Kundenfarben übernehmen:**
+Wenn die Kundenwebsite eine klare Farbpalette hat, diese für das Konzept adaptieren – Hintergrundfarbe, Textfarbe, Akzente. XPONext-Grün bleibt als dezenter Akzent erkennbar, tritt aber hinter die Kundenidentität zurück.
+
+**Kundenname prominent:**
+Der Name des Kunden sollte auf Slide 1 groß und klar stehen – nicht als Fließtext, sondern als Eyebrow oder H1-Element das sofort auffällt. Kein zu wörtliches Kopieren ihrer Taglines oder Inhalte – nur Stil übernehmen, nicht Inhalte.
+
+**XPONext-Logo immer sichtbar:**
+In jedem Konzept ein XPONext-Wasserzeichen unten links einfügen (fixiert, kleiner Text oder Logo-SVG). Auch wenn das Konzept im Kundenstil gestaltet ist, muss XPONext erkennbar bleiben.
 
 ```html
-<div class="highlight" style="margin-top:1.5rem;">
-  <h3>💰 Investition</h3>
-  <p>Monatliche Pauschale – alles inklusive: Website, SEO, GEO, Google Ads, laufende Pflege. Einmalige Einrichtungsgebühr für den Start. Genaues Angebot nach dem Erstgespräch – individuell auf Ihr Geschäft zugeschnitten.</p>
-</div>
+<!-- Wasserzeichen unten links – immer einfügen -->
+<div style="position:fixed;bottom:14px;left:20px;font-size:0.65rem;font-weight:800;letter-spacing:0.1em;color:#3F5137;opacity:0.5;z-index:200;">XPO·NEXT</div>
 ```
+
+**Google Ads immer erwähnen** – aber je nach Kontext als Haupt- oder Nebenpunkt:
+- Standardkonzept: Google Ads als eine der vier Leistungskarten, gleichwertig
+- Kunden mit schlechten Erfahrungen / Website-Partner vorhanden: Google Ads als messbare Ergänzung zu GEO, nicht im Mittelpunkt
+- Kein Konzept ohne Google Ads – es ist immer zumindest als Option erkennbar
+
+**Pilotprojekt-Framing (wenn Testimonials gewünscht):**
+Website ist kostenlos (statt €800) bei Abschluss eines Retainers. Im Gegenzug: eine ehrliche Google-Bewertung nach Zufriedenheit. Nur anbieten wenn der Nutzer das explizit möchte.
 
 ---
 
