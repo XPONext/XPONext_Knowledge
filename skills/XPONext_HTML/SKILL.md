@@ -86,7 +86,26 @@ font-weight: 800
 
 ## 4. Typografie
 
-**Schriftart:** Inter (Google Fonts)
+**Schriftart:** Inter
+
+Je nach Kontext zwei Varianten — nicht vermischen:
+
+### A) Produktions-Websites / kundenfacing
+
+Inter **lokal hosten** — NICHT von `fonts.googleapis.com` laden. Google Fonts überträgt Besucher-IP-Adressen an Google (Drittlandtransfer) und ist eine bekannte Abmahnungsfalle in Deutschland (LG München I, 2022). Woff2-Dateien einmal herunterladen und lokal ausliefern:
+
+```css
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-variable.woff2') format('woff2');
+  font-weight: 400 900;
+  font-display: swap;
+}
+```
+
+### B) Interne Konzept- und Präsentations-HTML
+
+Für schnelle Standalone-Dateien in `konzepte/` oder interne HTML-Präsentationen ist Google Fonts erlaubt:
 
 ```html
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
@@ -239,6 +258,7 @@ Abschnitte:           16pt Abstand vor Überschriften
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>XPONext — [Seitentitel]</title>
+  <!-- Intern: Google Fonts OK. Produktions-Website: @font-face aus §4 verwenden, <link> entfernen. -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -355,7 +375,7 @@ Gilt für PPTX (python-pptx) und HTML-Präsentationen gleichermaßen.
 | Primärfarbe | `#3F5137` |
 | Hintergrund | `#FFFFFF` |
 | Dunkel-Block | `#0D0D0D` |
-| Schrift | Inter (Google Fonts) |
+| Schrift | Inter (self-hosted prod. / Google Fonts intern) |
 | Logo | `XPO` #0D0D0D + `Next` #3F5137, font-weight 800 |
 | Logo-Position | Immer oben links |
 | H1 Gewicht | 900 |

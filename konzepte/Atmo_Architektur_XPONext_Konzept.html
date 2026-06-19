@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>atmosphäre architekten × XPONext</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent: #3F5137; --accent-dark: #2E3D28; --accent-light: #E8EDE6;
+      --text-primary: #0D0D0D; --text-body: #4B5563; --text-muted: #9CA3AF;
+      --bg: #FFFFFF; --bg-subtle: #F9FAFB; --bg-dark: #0D0D0D; --border: #E5E7EB;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text-primary); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 58px; }
+    .nav-logo { font-size: 1.15rem; font-weight: 800; color: var(--text-primary); }
+    .nav-logo span { color: var(--accent); }
+    .nav-center { display: flex; gap: 6px; align-items: center; }
+    .nav-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); border: none; cursor: pointer; transition: background 0.2s, transform 0.2s; }
+    .nav-dot.active { background: var(--accent); transform: scale(1.3); }
+    .nav-label { font-size: 0.76rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.04em; white-space: nowrap; }
+    .progress-bar { position: fixed; bottom: 0; left: 0; height: 3px; background: var(--accent); transition: width 0.3s ease; z-index: 200; }
+    .slide-counter { position: fixed; bottom: 14px; right: 20px; font-size: 0.72rem; font-weight: 600; color: var(--text-muted); z-index: 200; }
+    .slide { padding: 80px 5% 72px; max-width: 1100px; margin: 0 auto; border-bottom: 1px solid var(--border); opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .slide:last-of-type { border-bottom: none; }
+    .slide.visible { opacity: 1; transform: translateY(0); }
+    .slide-center { display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .slide-dark { background: var(--bg-dark); max-width: none; border-bottom: none; padding-left: 10%; padding-right: 10%; }
+    .slide-dark .inner { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    .eyebrow-dark { color: #7faa74; }
+    h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; line-height: 1.08; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: 1.2rem; }
+    h1 em, h2 em { color: var(--accent); font-style: normal; }
+    h2 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: 0.9rem; }
+    h2.light { color: #fff; } h2.light em { color: #7faa74; }
+    h3 { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.35rem; }
+    p.body { font-size: 1rem; line-height: 1.72; color: var(--text-body); max-width: 620px; }
+    p.hero-sub { font-size: clamp(1rem, 1.8vw, 1.15rem); color: var(--text-body); max-width: 520px; text-align: center; line-height: 1.65; }
+    .divider { width: 40px; height: 3px; background: var(--accent); border-radius: 2px; margin: 1rem 0 1.4rem; }
+    .divider-center { margin: 1rem auto 1.4rem; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.75rem; }
+    .card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem; }
+    .card.featured { border-color: var(--accent); border-width: 2px; }
+    .card-bar { width: 28px; height: 3px; background: var(--accent); border-radius: 2px; margin-bottom: 0.9rem; }
+    .card-bar.wide { width: 40px; background: var(--accent-dark); }
+    .highlight { background: var(--accent-light); border: 1px solid rgba(63,81,55,0.22); border-radius: 12px; padding: 1.4rem 1.6rem; margin-top: 1.5rem; }
+    .highlight h3 { color: var(--accent-dark); margin-bottom: 0.3rem; }
+    .highlight p { color: var(--text-body); font-size: 0.95rem; max-width: none; line-height: 1.65; }
+    .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1.75rem; }
+    .stat-box { background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem 1.4rem; }
+    .stat-num { font-size: 2.2rem; font-weight: 900; color: var(--accent); letter-spacing: -0.04em; line-height: 1; }
+    .stat-label { font-size: 0.82rem; color: var(--text-body); margin-top: 0.4rem; line-height: 1.5; }
+    .steps { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.6rem; }
+    .step { display: flex; gap: 1.2rem; align-items: flex-start; background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.3rem; }
+    .step-num { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 900; font-size: 0.82rem; display: flex; align-items: center; justify-content: center; }
+    .tag-row { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .tag { background: var(--bg-subtle); border: 1px solid var(--border); padding: 5px 14px; border-radius: 99px; font-size: 0.8rem; color: var(--text-body); }
+    .tag.green { background: var(--accent-light); border-color: rgba(63,81,55,0.3); color: var(--accent-dark); font-weight: 600; }
+    .cta-btn { display: inline-block; background: var(--accent); color: #fff; font-size: 1rem; font-weight: 700; padding: 0.9rem 2rem; border-radius: 8px; text-decoration: none; transition: opacity 0.2s; }
+    .cta-btn:hover { opacity: 0.85; }
+    .cta-btn-outline { display: inline-block; background: transparent; color: #fff; font-size: 1rem; font-weight: 500; padding: 0.9rem 2rem; border-radius: 8px; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); }
+    .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    @media (max-width: 680px) { nav .nav-label { display: none; } }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">XPO<span>Next</span></div>
+  <div class="nav-center" id="navDots"></div>
+  <div class="nav-label" id="navLabel"></div>
+</nav>
+<div class="progress-bar" id="progressBar"></div>
+<div class="slide-counter" id="slideCounter"></div>
+
+<!-- SLIDE 1: INTRO -->
+<div class="slide slide-center" data-slide="1" data-label="Intro" style="padding-top:110px;">
+  <div class="eyebrow">Für atmosphäre bommert . knoop . architekten · Köln</div>
+  <h1>German Design Award.<br><em>Mit Google Ads sofort auf Platz 1.</em></h1>
+  <p class="hero-sub" style="margin-top:0.5rem;">Ein Konzept für mehr Sichtbarkeit bei Ärzten und Klinikleitern – genau dann, wenn sie einen Architekten suchen.</p>
+  <div class="tag-row" style="justify-content:center; margin-top:1.75rem;">
+    <span class="tag">Köln & bundesweit</span>
+    <span class="tag">Arztpraxen & Kliniken</span>
+    <span class="tag">German Design Award 2022</span>
+    <span class="tag">Über 15 Jahre Erfahrung</span>
+  </div>
+  <div class="tag-row" style="justify-content:center; margin-top:0.6rem;">
+    <span class="tag green">Google Ads</span>
+    <span class="tag green">SEO & GEO</span>
+  </div>
+</div>
+
+<!-- SLIDE 2: STATUS QUO -->
+<div class="slide" data-slide="2" data-label="Status Quo">
+  <div class="eyebrow">Analyse</div>
+  <h2>Starke Nische.<br><em>Position 2 ist nicht Position 1.</em></h2>
+  <div class="divider"></div>
+  <p class="body">atmosphäre bommert . knoop . architekten ist eine der wenigen Kanzleien in Deutschland, die sich auf medizinische Architektur spezialisiert haben. Das Ranking ist solide – aber kein Google Ads-Schutz, kein GEO-Setup. Wenn ein Arzt heute online nach einem Architekten sucht, landet er oft bei jemandem anderen.</p>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <div class="stat-num">Pos. 2</div>
+      <div class="stat-label">Für „Architekt Arztpraxis Köln". Solide – aber Platz 1 geht an einen Mitbewerber. Ohne Google Ads bleibt das so.</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">0</div>
+      <div class="stat-label">Google Ads. Wenn ein Mitbewerber Ads schaltet, schiebt er sich über atmosphäre – pro Tag gehen so Anfragen verloren, ohne dass Sie es merken.</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">0</div>
+      <div class="stat-label">GEO-Präsenz. Wer ChatGPT fragt „Welcher Architekt plant Arztpraxen in Köln?" bekommt heute keinen Hinweis auf atmosphäre.</div>
+    </div>
+  </div>
+
+  <div class="cards" style="margin-top:1.5rem;">
+    <div class="card">
+      <div class="card-bar"></div>
+      <h3>Kein Schutz gegen Mitbewerber-Ads</h3>
+      <p style="font-size:0.91rem;max-width:none;color:var(--text-body);">Sobald ein Mitbewerber Google Ads auf Ihre Suchbegriffe schaltet, erscheint er über Ihnen – auch wenn atmosphäre organisch besser rankt. Ohne eigene Ads ist dagegen kein Schutz möglich.</p>
+    </div>
+    <div class="card">
+      <div class="card-bar"></div>
+      <h3>Spezialisierung nicht in KI-Suchen sichtbar</h3>
+      <p style="font-size:0.91rem;max-width:none;color:var(--text-body);">Immer mehr Ärzte und Klinikleiter fragen ChatGPT oder Google AI nach Empfehlungen. Ohne GEO-Setup erscheint atmosphäre dort nicht – obwohl Sie zu den wenigen echten Spezialisten für medizinische Architektur gehören.</p>
+    </div>
+    <div class="card">
+      <div class="card-bar"></div>
+      <h3>Design Award – digital kaum genutzt</h3>
+      <p style="font-size:0.91rem;max-width:none;color:var(--text-body);">Der German Design Award 2022 ist ein starkes Vertrauenssignal. In Google-Ergebnissen, Ads und KI-Antworten wird er bisher nicht aktiv als Differenzierungsmerkmal eingesetzt.</p>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <h3>Was das bedeutet</h3>
+    <p>Ein einziges Projekt bei atmosphäre entspricht einem Projektvolumen von €50.000 aufwärts. Jede Anfrage die an einen Mitbewerber geht, weil er bei Google Ads vorne steht oder von ChatGPT empfohlen wird, ist ein verlorenes Projekt. Das lässt sich mit gezieltem Einsatz direkt ändern.</p>
+  </div>
+</div>
+
+<!-- SLIDE 3: LEISTUNGEN -->
+<div class="slide" data-slide="3" data-label="Leistungen">
+  <div class="eyebrow">Was wir tun</div>
+  <h2>Platz 1.<br><em>Sofort und dauerhaft.</em></h2>
+  <div class="divider"></div>
+  <p class="body">Ergänzend zu Ihrer bestehenden Website-Betreuung übernehmen wir die Bereiche, die den direkten Unterschied machen, wer die Anfrage bekommt.</p>
+
+  <div class="cards">
+    <div class="card featured">
+      <div class="card-bar wide"></div>
+      <h3>Google Ads – sofort auf Platz 1</h3>
+      <p style="font-size:0.91rem;max-width:none;color:var(--text-body);">Wenn ein Arzt oder Klinikleiter heute „Architekt Arztpraxis Köln" sucht, erscheint atmosphäre ganz oben – noch vor allen organischen Ergebnissen. Sofort, ab dem ersten Tag. Kampagnenerstellung, Pflege und Optimierung inklusive. Ein Projekt deckt die Kosten für Jahre.</p>
+    </div>
+    <div class="card">
+      <div class="card-bar"></div>
+      <h3>GEO – der neue SEO</h3>
+      <p style="font-size:0.91rem;max-width:none;color:var(--text-body);">Wer ChatGPT, Siri oder Google AI fragt „Welcher Architekt spezialisiert sich auf Arztpraxen in Köln?" – der bekommt einen Namen. GEO sorgt dafür, dass es atmosphäre ist. Ein Kanal, den aktuell kaum ein Mitbewerber abdeckt.</p>
+    </div>
+    <div class="card">
+      <div class="card-bar"></div>
+      <h3>SEO – von Platz 2 auf Platz 1</h3>
+      <p style="font-size:0.91rem;max-width:none;color:var(--text-body);">Die organische Sichtbarkeit ist gut – aber Position 2 bedeutet, dass der erste Klick oft woanders landet. Gezielte technische und inhaltliche Optimierung bringt atmosphäre auf den ersten Platz.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4: ZUSAMMENARBEIT -->
+<div class="slide" data-slide="4" data-label="Zusammenarbeit">
+  <div class="eyebrow">Zusammenarbeit</div>
+  <h2>Ergänzend.<br><em>Messbar.</em></h2>
+  <div class="divider"></div>
+  <p class="body">XPONext arbeitet neben Ihrer bestehenden Betreuung – und übernimmt Ads, GEO und SEO. Fortlaufend, mit einem festen Ansprechpartner.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div><h3>Erstgespräch, ca. 30 Minuten</h3><p style="font-size:0.91rem;max-width:none;color:var(--text-body);margin-top:0.2rem;">Wir analysieren Ihre aktuelle Sichtbarkeit, definieren die richtigen Suchbegriffe für Ihre Zielgruppe und zeigen konkret, was Ads und GEO für atmosphäre bewirken würden.</p></div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div><h3>Setup in 1 bis 2 Wochen</h3><p style="font-size:0.91rem;max-width:none;color:var(--text-body);margin-top:0.2rem;">Google Ads Kampagne geht live, GEO-Setup wird eingerichtet, SEO-Optimierungen werden umgesetzt. Ohne Eingriff in Ihre bestehende Website-Struktur.</p></div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div><h3>Laufende Optimierung</h3><p style="font-size:0.91rem;max-width:none;color:var(--text-body);margin-top:0.2rem;">Ads-Performance wird monatlich analysiert und optimiert. GEO- und SEO-Updates fließen laufend ein. Sie sehen, was wirkt.</p></div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div><h3>Entwicklungen fließen direkt ein</h3><p style="font-size:0.91rem;max-width:none;color:var(--text-body);margin-top:0.2rem;">KI-Suchen, neue GEO-Standards, Algorithmus-Updates – was sich verändert, wird für atmosphäre sofort umgesetzt.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5: CTA -->
+<div class="slide slide-dark slide-center" data-slide="5" data-label="Kontakt">
+  <div class="inner">
+    <div class="eyebrow eyebrow-dark">XPONext · atmosphäre bommert . knoop . architekten</div>
+    <h2 class="light">Der nächste Schritt.<br><em>Ein Gespräch.</em></h2>
+    <div class="divider divider-center"></div>
+    <p style="color:var(--text-muted); max-width:460px; line-height:1.7; font-size:1rem;">30 Minuten reichen, um zu verstehen, ob und wie wir zusammenarbeiten können.</p>
+    <div class="btn-row" style="justify-content:center; margin-top:1.75rem;">
+      <a class="cta-btn" href="https://www.xponext.de" target="_blank">Gespräch vereinbaren</a>
+      <a class="cta-btn-outline" href="https://www.xponext.de" target="_blank">www.xponext.de</a>
+    </div>
+    <p style="margin-top:2.5rem; font-size:0.76rem; color:#444;">© 2026 XPONext GbR · Erstellt für atmosphäre bommert . knoop . architekten, Köln</p>
+  </div>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  const navDots = document.getElementById('navDots');
+  const navLabel = document.getElementById('navLabel');
+  const progressBar = document.getElementById('progressBar');
+  const slideCounter = document.getElementById('slideCounter');
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'nav-dot';
+    dot.setAttribute('aria-label', `Folie ${i + 1}`);
+    dot.addEventListener('click', () => slides[i].scrollIntoView({ behavior: 'smooth' }));
+    navDots.appendChild(dot);
+  });
+  const dots = document.querySelectorAll('.nav-dot');
+  function updateUI() {
+    let current = 0, maxV = 0;
+    slides.forEach((s, i) => {
+      const r = s.getBoundingClientRect();
+      const v = Math.max(0, Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0)) / window.innerHeight;
+      if (v > maxV) { maxV = v; current = i; }
+      if (r.top < window.innerHeight * 0.82) s.classList.add('visible');
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    navLabel.textContent = slides[current]?.dataset.label || '';
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    progressBar.style.width = (pct * 100) + '%';
+    slideCounter.textContent = `${current + 1} / ${total}`;
+  }
+  document.addEventListener('keydown', e => {
+    const cur = [...slides].findIndex(s => { const r = s.getBoundingClientRect(); return r.top <= window.innerHeight / 2 && r.bottom >= window.innerHeight / 2; });
+    if ((e.key === 'ArrowDown' || e.key === 'ArrowRight') && cur < total - 1) slides[cur + 1].scrollIntoView({ behavior: 'smooth' });
+    if ((e.key === 'ArrowUp' || e.key === 'ArrowLeft') && cur > 0) slides[cur - 1].scrollIntoView({ behavior: 'smooth' });
+  });
+  window.addEventListener('scroll', updateUI, { passive: true });
+  updateUI();
+</script>
+</body>
+</html>
