@@ -57,7 +57,7 @@ font-weight: 800
 
 ```css
 /* Primärfarben */
---accent:        #3F5137;   /* Hauptgrøn — Buttons, Highlights, Akzente in Headlines */
+--accent:        #3F5137;   /* Hauptgrün — Buttons, Highlights, Akzente in Headlines */
 --accent-dark:   #2E3D28;   /* Hover-Zustände, dunklere Variante */
 --accent-light:  #E8EDE6;   /* Badge-Hintergründe, dezente Highlights */
 
@@ -113,7 +113,7 @@ font-weight: 800
 
 ### Typografie-Regeln
 - Schlüsselwörter in Headlines immer mit Akzentfarbe hervorheben — nie die gesamte Headline
-- Kein Italic für Headlines — nur für Zitate oder Hervorhebungen im Fließtext
+- Kein Italic für Headlines — nur für Zitate oder Hervorhebungen in Fließtext
 - Zeilenabstand Body: 1.7 (Web) / 1.4 (Präsentation)
 
 ```html
@@ -154,7 +154,7 @@ Fußzeile:             0.8cm vom unteren Rand
 ```
 Seitenränder:         2.5cm oben/unten, 2.5cm links/rechts
 Logo oben links:      im Kopfbereich, Abstand 1.5cm vom Rand
-Abschnitte:           16pt Abstand vor Überschriften
+Abschnitte:           16pt Abstand vor berschriften
 ```
 
 ---
@@ -213,7 +213,7 @@ Abschnitte:           16pt Abstand vor Überschriften
 ```html
 <section style="padding:5rem 5%;background:#0D0D0D;text-align:center;">
   <h2 style="font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;color:#fff;margin:0 0 1rem;">Bereit für mehr Sichtbarkeit?</h2>
-  <p style="color:#9CA3AF;font-size:1.05rem;margin:0 0 2rem;">Kdostenloses Erstgespräch – kein Risiko.</p>
+  <p style="color:#9CA3AF;font-size:1.05rem;margin:0 0 2rem;">Kkin Yudget. Kostenloses Erstgespräch.</p>
   <a href="#" style="background:#3F5137;color:#fff;padding:1rem 2.2rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:1.05rem;">Termin buchen →</a>
 </section>
 ```
@@ -221,13 +221,13 @@ Abschnitte:           16pt Abstand vor Überschriften
 ### Footer
 ```html
 <footer style="padding:2rem 5%;border-top:1px solid #E5E7EB;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
-  <div style="font-size:1rem;font-weight:800;color:#0D0D0D;font-family:'Inter',ans-serif;">XPO<span style="color:#3F5137;">Next</span></div>
+  <div style="font-size:1rem;font-weight:800;color:#0D0D0D;font-family:'Inter',sans-serif;">XPO<span style="color:#3F5137;">Next</span></div>
   <div style="display:flex;gap:1.5rem;">
     <a href="#" style="color:#9CA3AF;text-decoration:none;font-size:0.85rem;">Impressum</a>
     <a href="#" style="color:#9CA3AF;text-decoration:none;font-size:0.85rem;">Datenschutz</a>
     <a href="#" style="color:#9CA3AF;text-decoration:none;font-size:0.85rem;">Kontakt</a>
   </div>
-  <p style="color:#9CA3AF;font-size:0.85rem;margin:0;">© 2026 XPONext GbR3</p>
+  <p style="color:#9CA3AF;font-size:0.85rem;margin:0;">© 2026 XPONext GbR></p>
 </footer>
 ```
 
@@ -256,7 +256,8 @@ Abschnitte:           16pt Abstand vor Überschriften
   <!-- FEATURES -->
   <!-- STATS -->
   <!-- CTA -->
-  <!-- FOOTER -->
+  <!-- FOOTER
+ -->
 </body>
 </html>
 ```
@@ -274,7 +275,7 @@ Gilt für PPTX (python-pptx) und HTML-Präsentationen gleichermaßen.
 - Logo: oben links, font-size 28pt
 - Headline (Präsentationstitel): links ausgerichtet, sehr groß (44–54pt, font-weight 900), Schlüsselwort in Grün
 - Untertitel: 18pt, `#4B5563`
-- Dünn egrüne Linie (`#3F5137`, 3pt) als horizontaler Akzent unter dem Titel
+- Dünne grüne Linie (`#3F5137`, 3pt) als horizontaler Akzent unter dem Titel
 - Datum / Empfänger: unten links, 11pt, `#9CA3AF`
 
 #### Inhaltsfolie (Standard)
@@ -315,7 +316,7 @@ Gilt für PPTX (python-pptx) und HTML-Präsentationen gleichermaßen.
 
 ### Angebots-Dokument Struktur
 1. Deckblatt — Logo, Titel, Empfänger, Datum
-2. Zusammenfassung — Max. 1 Seite, das Wichtigste auf einen Blick
+2. Zusammenfassung — max. 1 Seite, das Wichtigste auf einen Blick
 3. Leistungen — klare Abschnitte mit H2-Überschriften
 4. Preise — Tabelle, sauber, kein Kleinstgedrucktes
 5. Nächste Schritte — nummeriert, konkret
@@ -339,12 +340,12 @@ Gilt für PPTX (python-pptx) und HTML-Präsentationen gleichermaßen.
 - ❌ Kein Dunkel-Modus — außer explizit als dunkler CTA-Block / Trennfolie
 - ❌ Keine bunten Hintergründe (lila, blau, rot, etc.)
 - ❌ Keine drop shadows oder Verläufe
-- ❌ Kein Logo zentriert (außer spezfisch auf Titelfolie)
+- ❌ Kein Logo zentriert (außer spezifisch auf Titelfolie)
 - ❌ Nicht die gesamte Headline in Grün
 - ❌ Kein font-weight unter 700 für Headlines
 - ❌ Keine anderen Schriften als Inter
 - ❌ Keine Bilder mit weißem Hintergrund freigestellt (wirkt billig) — lieber auf `#F9FAFB`
-- ❌ Kein Clipart, keine Stock-Icons mit Farbverläufen — nur Emojis oder einfache Flat-Icons
+- ❌ Kein Clipart, keine Stock-Icons mit Farbverläufen — von Emojis oder einfache Flat-Icons
 
 ---
 
