@@ -49,7 +49,7 @@ Als Agentur: Manager Account anlegen, dann pro Kunde ein eigenes Account darunte
 - Standort eng eingrenzen (Stadt / PLZ-Umkreis), Sprache auf Deutsch
 - Budget: realistisches Tagesbudget, Google gleicht Schwankungen monatlich aus
 
-**Ad Groups:** Pro Leistung eine eigene Ad Group (z.B. "Dachreparatur", "Dachneubau"). So sind Keywords und Anzeigentext thematisch konsistent → besserer Qualitätsfaktor → gønstigere Klicks.
+**Ad Groups:** Pro Leistung eine eigene Ad Group (z.B. "Dachreparatur", "Dachneubau"). So sind Keywords und Anzeigentext thematisch konsistent → besserer Qualitätsfaktor → günstigere Klicks.
 
 **Keywords:** Broad Match ohne Sonderzeichen eingeben. Google-Keyword-Vorschläge per Website-URL nutzen als Startpunkt, dann manuell bereinigen.
 
@@ -74,7 +74,7 @@ Google vergibt Anzeigenpositionen per Auktion — nicht nach höchstem Gebot, so
 
 **Broad Match Uplift-Zahlen (Google-Studien):** Exact→Broad mit CPA: +35% Conversions | Phrase→Broad mit CPA: +25% | Phrase→Broad mit ROAS: +12% Conversion-Wert. Voraussetzung: Smart Bidding aktiv + genug Conversion-Daten im Konto.
 
-**Før Kundenkampagnen:** Quality Score pro Keyword im Konto prøfen. Schwache Werte meist durch schlechte Keyword-Anzeigen-Übereinstimmung oder irrelevante Landing Page. Assets (Sitelinks, Bilder, Standort) immer vollständig beføllen — verbessern Ad Rank ohne Mehrkosten.
+**Für Kundenkampagnen:** Quality Score pro Keyword im Konto prüfen. Schwache Werte meist durch schlechte Keyword-Anzeigen-Übereinstimmung oder irrelevante Landing Page. Assets (Sitelinks, Bilder, Standort) immer vollständig befüllen — verbessern Ad Rank ohne Mehrkosten.
 
 ---
 
@@ -112,9 +112,9 @@ Nicht denselben Begriff in allen drei Match Types gleichzeitig einsetzen — Bro
 - 1 RSA pro Ad Group mit Ad Strength "Gut" oder "Ausgezeichnet" (max. 3 RSAs pro Ad Group)
 - Nicht pinnen außer wenn ein Text zwingend immer erscheinen muss
 
-**Ad Strength** (bei Erstellung) prøfen — zeigt Relevanz und Vielfalt der Assets vor der Ausspielung. **Asset Performance** (nach Ausspielung) zeigt, welche einzelnen Assets am besten performen → schwache Assets durch bessere ersetzen.
+**Ad Strength** (bei Erstellung) prüfen — zeigt Relevanz und Vielfalt der Assets vor der Ausspielung. **Asset Performance** (nach Ausspielung) zeigt, welche einzelnen Assets am besten performen → schwache Assets durch bessere ersetzen.
 
-**Assets — immer fvollständig beføllen (verbessern Ad Rank ohne Mehrkosten):**
+**Assets — immer vollständig befüllen (verbessern Ad Rank ohne Mehrkosten):**
 - Business Name & Logo: +8% Conversions
 - Bilder: mind. 4 pro Ad Group, Formate 1:1 + 1,91:1, wichtige Inhalte in mittleren 80% der Bildfläche
 - Sitelinks: 8–10 ideal, mind. 2 Unterseiten nötig
@@ -124,7 +124,7 @@ Nicht denselben Begriff in allen drei Match Types gleichzeitig einsetzen — Bro
 
 **Optimierung im Konto:** Optimization Score-Empfehlungen regelmäßig abarbeiten. Für große Konten mit vielen Ad Groups: Ad Builder (Search Ads 360) nutzen, um Assets skaliert zu aktualisieren.
 
-**Yusammenspiel:** RSA + Broad Match + Smart Bidding optimieren gemeinsam Anzeigeninhalt, Reichweite und Gebot in Echtzeit.
+**Zusammenspiel:** RSA + Broad Match + Smart Bidding optimieren gemeinsam Anzeigeninhalt, Reichweite und Gebot in Echtzeit.
 
 ---
 
@@ -138,24 +138,24 @@ Nicht denselben Begriff in allen drei Match Types gleichzeitig einsetzen — Bro
 
 **Beim Setup für Kunden:**
 - Empfohlene Werte beim Opt-in oder historische Performance als Startpunkt nutzen
-- Bei Target ROAS/CPA Becget nicht deckeln — sonst bremst man die Strategie aus
+- Bei Target ROAS/CPA Budget nicht deckeln — sonst bremst man die Strategie aus
 - Lernphase (4–7 Tage) nicht in die Bewertung einbeziehen
 - Performance erst nach 1 Monat oder 50 Conversions wirklich beurteilen — vorher zu wenig Datenbasis
 
 **Welche Smart-Bidding-Strategie passt zum Kundenprofil:**
 - **Lokaler Dienstleister mit klaren Margen** ("brauche X € Umsatz pro investiertem €") → Target ROAS — aber Ziel realistisch ansetzen, sonst bremst sich die Strategie selbst aus und Volumen bricht ein
-- **Betrieb mit unterschiedlich wertvollen Leistungen** (z.B. kleine vs. große Aufträge), der eber wachsen/Marktanteil gewinnen will als einen festen ROI zu halten → Maximize Conversion Value ohne Ziel, Tagesbudget als Stellschraube
+- **Betrieb mit unterschiedlich wertvollen Leistungen** (z.B. kleine vs. große Aufträge), der eher wachsen/Marktanteil gewinnen will als einen festen ROI zu halten → Maximize Conversion Value ohne Ziel, Tagesbudget als Stellschraube
 - **Lead-fokussiert ohne genug Datenbasis für ROAS** → erst Maximize Conversions (mit oder ohne CPA-Ziel), CPA-Ziel nicht zu niedrig ansetzen — sonst limitiert das selbst das Volumen
 
-**Conversion-Tracking VOR dem Smart-Bidding-Setup prøfen (wichtigster Schritt bei jeder Kontoübernahme):**
+**Conversion-Tracking VOR dem Smart-Bidding-Setup prüfen (wichtigster Schritt bei jeder Kontoübernahme):**
 - **Primary Actions** = das, worauf die KI bietet (Spalte "Conversions"). Hier dürfen nur Aktionen stehen, die echte Business Truth abbilden (Käufe, qualifizierte Leads/Anrufe/Termine) — sonst optimiert das Konto auf das Falsche
-- **Secondary Actions** = nur zur Beobachtung ("Alle Conversionen"), fließen nicht ins Bidding ein. Über Custom Goals lassen sie sich bei Bedarf biddingfähig machen, aber: wo möglich Standard-Kategorien nutzen — die KI lernt damit effiziezter
+- **Secondary Actions** = nur zur Beobachtung ("Alle Conversions"), fließen nicht ins Bidding ein. Über Custom Goals lassen sie sich bei Bedarf biddingfähig machen, aber: wo möglich Standard-Kategorien nutzen — die KI lernt damit effizienter
 - Jede Aktion korrekt kategorisieren (Kauf, Lead-Formular, Terminbuchung etc.) — das steuert auch Schutzmechanismen gegen ungültigen Traffic
 - Kontoweite Performance-Strategie als Account Default setzen (maximiert KI-Lernen), Campaign-Specific-Overrides nur bei wirklich abweichenden Kampagnenzielen
 
 **Vor dem Aktivieren von Target ROAS:** mind. 15 Conversions in 30 Tagen je Search-Kampagne — sonst fehlt der KI die Datenbasis für sinnvolle Gebote.
 
-**Performance Max:** bespielt alle Google-Kanäle aus einer Kampagne, braucht dafør aber robuste Inputs (klare Ziele, gute Assets, eigene Zielgruppen-/Kundendaten als Signale). Für Kunden mit breitem Angebot und vorhandenem Conversion-Tracking sinnvoll.
+**Performance Max:** bespielt alle Google-Kanäle aus einer Kampagne, braucht dafür aber robuste Inputs (klare Ziele, gute Assets, eigene Zielgruppen-/Kundendaten als Signale). Für Kunden mit breitem Angebot und vorhandenem Conversion-Tracking sinnvoll.
 
 **Typischer Strategie-Lebensweg eines Kundenkontos — vom Start bis zur Skalierung:**
 1. **Kein Conversion-Tracking vorhanden:** Maximize Clicks (Standard bei neuen Search-Kampagnen) — holt möglichst viele Klicks aus dem Tagesbudget, bei minimalem Pflegeaufwand. Nur als Übergangslösung sehen
@@ -164,7 +164,7 @@ Nicht denselben Begriff in allen drei Match Types gleichzeitig einsetzen — Bro
 
 **Awareness-/Markenkampagnen (z.B. lokale Sichtbarkeit aufbauen):** Target Impression Share — Position wählen (ganz oben / oben / irgendwo auf der Seite), Ziel an der bisherigen 30-Tage-Impression-Share ausrichten und **kein zu niedriges Max-CPC-Limit** setzen, sonst bremst sich die Strategie selbst aus.
 
-> Praxis-Faustregel: Bei der Kontoübernahme zuerst prøfen, in welcher Phase dieses Lebenswegs der Kunde steht — viele Konten laufen unnötig lange auf Maximize Clicks, obwohl längst genug Tracking-Daten für eine wertorientierte Strategie da wären.
+> Praxis-Faustregel: Bei der Kontoübernahme zuerst prüfen, in welcher Phase dieses Lebenswegs der Kunde steht — viele Konten laufen unnötig lange auf Maximize Clicks, obwohl längst genug Tracking-Daten für eine wertorientierte Strategie da wären.
 
 **Strategiewechsel sind jederzeit möglich** — Bid Strategy in der laufenden Kampagne anpassen, wenn sich Kundenziele ändern (typisch: Maximize Conversions → Target CPA, sobald genug Daten für ein Effizienzziel da sind). Beim Umstieg auf Target CPA: Ziel-CPA zu Beginn nah am aktuellen CPA setzen (kein Volumen-Schock) und die Google-Empfehlung als Richtwert nutzen.
 
@@ -175,16 +175,16 @@ Nicht denselben Begriff in allen drei Match Types gleichzeitig einsetzen — Bro
 
 > Bei stagnierender Performance also nicht nur an Geboten drehen, sondern strukturiert prüfen: Keywords/Reichweite → Zielgruppen-Listen → Creative-Qualität.
 
-**Value-based Bidding før Kunden mit unterschiedlich wertvollen Conversions:**
-- Conversion-Werte lassen sich mit echten Geschäftsdaten anpassen (z.B. unterschiedlicher Lifetime Value je nach Gerät/Kanal) — Smart Bidding bietet dann je nach Signal unterschiedlich, um das Wertziel zu erreichen. Wichtig: zusammengehorige Segmente (z.B. Desktop + Mobile) in **derselben Kampagne** lassen, nicht künstlich trennen
+**Value-based Bidding für Kunden mit unterschiedlich wertvollen Conversions:**
+- Conversion-Werte lassen sich mit echten Geschäftsdaten anpassen (z.B. unterschiedlicher Lifetime Value je nach Gerät/Kanal) — Smart Bidding bietet dann je nach Signal unterschiedlich, um das Wertziel zu erreichen. Wichtig: zusammengehörige Segmente (z.B. Desktop + Mobile) in **derselben Kampagne** lassen, nicht künstlich trennen
 - **Voraussetzung vor dem Umstieg:** sauberes Conversion-Tracking als Fundament — erst Messung etablieren, dann Smart Bidding aufsetzen. Global Site Tag + Enhanced Conversions einrichten, um Tracking-Lücken (z.B. bei fehlenden Cookies) zu vermeiden
-- **Bei der Bewertung:** erste 2–3 Conversion-Zyklen als Anlaufphase ignorieren, Conversion Delay einberechnen (Bid Strategy Report nutzen) und — wo möglich - den Effekt eines Strategiewechsels per A/B-Test/Campaign Experiment nachweisen, statt nur auf Bauchgefühl zu vertrauen
+- **Bei der Bewertung:** erste 2–3 Conversion-Zyklen als Anlaufphase ignorieren, Conversion Delay einberechnen (Bid Strategy Report nutzen) und — wo möglich — den Effekt eines Strategiewechsels per A/B-Test/Campaign Experiment nachweisen, statt nur auf Bauchgefühl zu vertrauen
 
 **Erfolgsmetrik vorab festlegen — pro Strategie unterschiedlich:**
-- Maximize Conversion Value → **Total Conversion Value** (Volumen hängt am Tagesbudget — pehr Wert = Budget erhöhen)
+- Maximize Conversion Value → **Total Conversion Value** (Volumen hängt am Tagesbudget — mehr Wert = Budget erhöhen)
 - Target ROAS → **Total Conversion Value + Average ROAS** (Volumen hängt am ROAS-Ziel — bei vorhandener Historie die empfohlenen Werte als Start nutzen)
 
-> Praxis-Regel før Kundengespräche: Vorab eine einzige klare Erfolgskennzahl vereinbaren, die echte Geschäftswahrheit abbildet (Umsatz, Gewinn, Termin-Wert) — nicht an Zwischenmetriken wie CPC/CPA hängenbleiben, das sind nur Symptome, keine Ziele.
+> Praxis-Regel für Kundengespräche: Vorab eine einzige klare Erfolgskennzahl vereinbaren, die echte Geschäftswahrheit abbildet (Umsatz, Gewinn, Termin-Wert) — nicht an Zwischenmetriken wie CPC/CPA hängenbleiben, das sind nur Symptome, keine Ziele.
 
 ---
 
@@ -193,12 +193,12 @@ Nicht denselben Begriff in allen drei Match Types gleichzeitig einsetzen — Bro
 Forecasting-Tool für Budget- und Target-Entscheidungen — bis zu **18 Monate** im Voraus simulierbar.
 
 **Für Kundenkampagnen einsetzen, um:**
-- **Budgetänderungen vorab zu begründen:** Bevor man einem Kunden eine Budgeterhohung/-kürzung vorschlägt, im Performance Planner simulieren, welche Auswirkung das voraussichtlich auf Conversions/Wert hat — schafft Vertrauen und eine datenbasierte Argumentation
+- **Budgetänderungen vorab zu begründen:** Bevor man einem Kunden eine Budgeterhöhung/-kürzung vorschlägt, im Performance Planner simulieren, welche Auswirkung das voraussichtlich auf Conversions/Wert hat — schafft Vertrauen und eine datenbasierte Argumentation
 - **Saisonale Phasen vorzubereiten:** Vor bekannten Peaks (Weihnachtsgeschäft, Sales, Branchen-Saison des Kunden) Forecast erstellen und Budget rechtzeitig anpassen, statt erst während der Hochsaison zu reagieren
-- **Mehrere Kampagnen/Konten gegeneinander abzuwägen:** Bei Kunden mit mehreren Kampagnen (oder mehreren Standorten als eigene Konten) zeigt der Planner, wo eine Budgetverschiebung den größesten Effekt hätte
+- **Mehrere Kampagnen/Konten gegeneinander abzuwägen:** Bei Kunden mit mehreren Kampagnen (oder mehreren Standorten als eigene Konten) zeigt der Planner, wo eine Budgetverschiebung den größten Effekt hätte
 - **Ziel-CPA/ROAS-Anpassungen zu testen:** Vor einer Änderung an der Bid Strategy simulieren, wie sich ein neues Ziel auf Volumen und Kosten auswirken würde — reduziert das Risiko böser Überraschungen nach der Umstellung
 
-> Praxis-Tipp: Performance Planner regelmäßig (z.B. quartalsweise) als Teil der Kontoprøfung nutzen — pnicht nur reaktiv, wenn ein Kunde nach einer Budgetänderung fragt.
+> Praxis-Tipp: Performance Planner regelmäßig (z.B. quartalsweise) als Teil der Kontoprüfung nutzen — nicht nur reaktiv, wenn ein Kunde nach einer Budgetänderung fragt.
 
 **Ad Customizers** — für personalisierte Anzeigen ohne manuellen Aufwand:
 - **Location Insertion** → Stadtname dynamisch in Headline einsetzen (ideal für lokale Kampagnen mit mehreren Standorten)
