@@ -81,7 +81,7 @@ Fülle das Template unten mit den gesammelten Daten und speichere die Datei unte
 **Stil-Regeln (immer einhalten):**
 - Keine Emojis in Badges, Card-Icons oder Tags
 - Keine Bindestriche (–) in Headlines → stattdessen Punkt + neue Zeile
-- Sachlicher, professioneller Ton – kein „wir verkaufen Ihnen nichts", kein „kein Risiko"
+- Sachlicher, professioneller Ton – kein "„wir verkaufen Ihnen nichts", kein „kein Risiko"
 - Eyebrow-Labels statt Badge-Bubbles
 - Card-Icons: kleine grüne Linie (.card-bar) statt Emoji
 

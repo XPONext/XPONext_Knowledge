@@ -57,7 +57,7 @@ font-weight: 800
 
 ```css
 /* Primärfarben */
---accent:        #3F5137;   /* Hauptgrøn — Buttons, Highlights, Akzente in Headlines */
+--accent:        #3F5137;   /* Hauptgrün — Buttons, Highlights, Akzente in Headlines */
 --accent-dark:   #2E3D28;   /* Hover-Zustände, dunklere Variante */
 --accent-light:  #E8EDE6;   /* Badge-Hintergründe, dezente Highlights */
 
@@ -194,7 +194,7 @@ Abschnitte:           16pt Abstand vor Überschriften
 ### Buttons
 ```html
 <!-- Primär -->
-<a href="#" style="background:#3F5137;color:#fff;padding:0.85rem 1.8rem;border-radius;8px;text-decoration:none;font-weight:700;font-size:1rem;display:inline-flex;align-items:center;gap:8px;">Termin buchen →</a>
+<a href="#" style="background:#3F5137;color:#fff;padding:0.85rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:1rem;display:inline-flex;align-items:center;gap:8px;">Termin buchen →</a>
 
 <!-- Sekundär -->
 <a href="#" style="background:#fff;color:#0D0D0D;padding:0.85rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:1rem;border:1.5px solid #D1D5DB;display:inline-flex;align-items:center;gap:8px;">Mehr erfahren</a>
@@ -205,7 +205,7 @@ Abschnitte:           16pt Abstand vor Überschriften
 <div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:1.75rem;">
   <div style="width:44px;height:44px;background:#E8EDE6;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.3rem;">🌐</div>
   <h3 style="font-size:1.15rem;font-weight:700;color:#0D0D0D;margin:0 0 0.5rem;">Titel</h3>
-  <p style="color:#4B5563;font-size:0.95rem;line-height:1.6;margin:0;">Beschreibung in i–2 Sätzen.</p>
+  <p style="color:#4B5563;font-size:0.95rem;line-height:1.6;margin:0;">Beschreibung in 1–2 Sätzen.</p>
 </div>
 ```
 
@@ -287,9 +287,9 @@ Gilt für PPTX (python-pptx) und HTML-Präsentationen gleichermaßen.
 
 #### Abschnitts-Trennfolie
 - Hintergrund: `#0D0D0D` (dunkel)
-- Logo: oben links, weiß/grøn
+- Logo: oben links, weiß/grün
 - Abschnittsname: zentriert, 38–44pt, font-weight 900, weiß
-- Optional: grøne Linie als Dekorelement
+- Optional: grüne Linie als Dekorelement
 
 #### Abschlussfolie
 - Hintergrund: Weiß
@@ -300,7 +300,7 @@ Gilt für PPTX (python-pptx) und HTML-Präsentationen gleichermaßen.
 ### Präsentations-Regeln
 - Maximal 6 Bulletpoints pro Folie — lieber mehr Folien
 - Keine Bullet-Wände: Bullets sind kurz (max. 1 Zeile) + erklärende Notizen im Speaker-Bereich
-- Bilder und Icons immer in grønem Badge-Stil (`#E8EDE6` Hintergrund, border-radius)
+- Bilder und Icons immer in grünem Badge-Stil (`#E8EDE6` Hintergrund, border-radius)
 - Keine drop shadows, keine Verläufe, keine clipart-artigen Elemente
 - Tabellen: Header-Zeile mit `#3F5137` Hintergrund + weißer Text, Zeilen alternieren `#fff` / `#F9FAFB`
 
@@ -329,7 +329,7 @@ Gilt für PPTX (python-pptx) und HTML-Präsentationen gleichermaßen.
 
 ### Hervorhebungen in Texten
 - Wichtige Begriffe: **fett**, niemals unterstrichen
-- Zahlen / Ergebnisse: Akzentgrøn `#3F5137`, fett
+- Zahlen / Ergebnisse: Akzentgrün `#3F5137`, fett
 - Niemals kursiv für ganze Sätze
 
 ---
@@ -340,7 +340,7 @@ Gilt für PPTX (python-pptx) und HTML-Präsentationen gleichermaßen.
 - ❌ Keine bunten Hintergründe (lila, blau, rot, etc.)
 - ❌ Keine drop shadows oder Verläufe
 - ❌ Kein Logo zentriert (außer spezifisch auf Titelfolie)
-- ❌ Nicht die gesamte Headline in Grøn
+- ❌ Nicht die gesamte Headline in Grün
 - ❌ Kein font-weight unter 700 für Headlines
 - ❌ Keine anderen Schriften als Inter
 - ❌ Keine Bilder mit weißem Hintergrund freigestellt (wirkt billig) — lieber auf `#F9FAFB`
